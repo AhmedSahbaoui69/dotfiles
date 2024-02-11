@@ -20,31 +20,31 @@ main() {
     choice=$(menu | rofi -dmenu | cut -d. -f1)
     case $choice in
         1)
-            kitty -e nano "$UserConfigs/ENVariables.conf"
+            kitty -e nvim "$UserConfigs/ENVariables.conf"
             ;;
         2)
-            kitty -e nano "$UserConfigs/WindowRules.conf"
+            kitty -e nvim "$UserConfigs/WindowRules.conf"
             ;;
         3)
-            kitty -e nano "$UserConfigs/Startup_Apps.conf"
+            kitty -e nvim "$UserConfigs/Startup_Apps.conf"
             ;;
         4)
-            kitty -e nano "$UserConfigs/UserKeybinds.conf"
+            kitty -e nvim "$UserConfigs/UserKeybinds.conf"
             ;;
         5)
-            kitty -e nano "$UserConfigs/Monitors.conf"
+            kitty -e nvim "$UserConfigs/Monitors.conf"
             ;;
         6)
-            kitty -e nano "$UserConfigs/Laptops.conf"
+            kitty -e nvim "$UserConfigs/Laptops.conf"
             ;;
         7)
-            kitty -e nano "$UserConfigs/UserSettings.conf"
+            kitty -e nvim "$UserConfigs/UserSettings.conf"
             ;;
         8)
-            kitty -e nano "$configs/Settings.conf"
+            kitty -e nvim "$configs/Settings.conf"
             ;;
         9)
-            kitty -e nano "$configs/Keybinds.conf"
+            kitty -e nvim "$configs/Keybinds.conf"
             ;;
         *)
             ;;

@@ -1,5 +1,7 @@
 # ~/.zshrc file for zsh interactive shells.
 
+echo -e "\n   `hyprctl splash`\n";
+
 setopt autocd              # change directory just by typing its name
 #setopt correct            # auto correct mistakes
 setopt interactivecomments # allow comments in interactive mode

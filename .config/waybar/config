@@ -13,10 +13,10 @@
 	
 	"modules-left": [
 		"custom/menu",
-		"custom/separator#blank_2", 
+		"custom/separator#blank", 
 		"hyprland/workspaces#pacman",
-		"custom/separator#blank_2",
-		"mpris",
+		"hyprland/window",
+		"custom/separator#blank_2", 
 		"custom/swaync",
 		"tray",
 	],
@@ -26,6 +26,7 @@
 		"custom/weather",
 	],
 	"modules-right": [
+		"network#speed",
 		"group/motherboard",
 		"custom/separator#blank_2",
 		"group/laptop",

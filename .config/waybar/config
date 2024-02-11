@@ -16,7 +16,6 @@
 		"custom/separator#blank", 
 		"hyprland/workspaces#pacman",
 		"hyprland/window",
-		"custom/separator#blank_2", 
 		"custom/swaync",
 		"tray",
 	],
@@ -28,7 +27,6 @@
 	"modules-right": [
 		"network#speed",
 		"group/motherboard",
-		"custom/separator#blank_2",
 		"group/laptop",
 		"custom/separator#blank_2",
 		"custom/cava_mviz",

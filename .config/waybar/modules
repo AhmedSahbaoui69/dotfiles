@@ -364,7 +364,7 @@
 "network#speed": {
     "interval": 1,
     "format": "{ifname}",
-    "format-wifi": "{icon}  {bandwidthUpBytes}  {bandwidthDownBytes}",
+    "format-wifi": " {bandwidthUpBytes}  {bandwidthDownBytes}",
     "format-ethernet": "󰌘   {bandwidthUpBytes}  {bandwidthDownBytes}",
     "format-disconnected": "󰌙", 
     "tooltip-format": "{ipaddr}",
@@ -373,7 +373,7 @@
     "tooltip-format-ethernet": "{ifname} 󰌘",
     "tooltip-format-disconnected": "󰌙 Disconnected",
     "max-length": 25,
-    "min-length": 25,
+    "min-length": 5,
     "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"]
 },
       

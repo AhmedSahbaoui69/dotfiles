@@ -1,6 +1,6 @@
 # ~/.zshrc file for zsh interactive shells.
 
-echo -e "\n ♢ `hyprctl splash` ♢\n";
+cowsay -f sodomized.cow `hyprctl splash`; echo;
 
 setopt autocd              # change directory just by typing its name
 #setopt correct            # auto correct mistakes

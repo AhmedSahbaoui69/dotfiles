@@ -196,8 +196,7 @@
     "format-time": "{H}h {M}min",
     "tooltip": true,
     "tooltip-format": "{timeTo} {power}w",
-    "on-click-middle": "~/.config/hypr/scripts/ChangeBlur.sh",
-    "on-click-right": "~/.config/hypr/scripts/Wlogout.sh",
+    "on-click-right": "wlogout",
 },
       
 "bluetooth": {
@@ -518,7 +517,7 @@
 "custom/power": {
     "format": "⏻ ",
     "exec": "echo ; echo 󰟡 power",
-	"on-click": "~/.config/hypr/scripts/Wlogout.sh",
+	"on-click": "wlogout",
     "interval" : 86400, // once every day
     "tooltip": true,
 },

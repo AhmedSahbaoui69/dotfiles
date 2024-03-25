@@ -196,7 +196,7 @@
     "format-time": "{H}h {M}min",
     "tooltip": true,
     "tooltip-format": "{timeTo} {power}w",
-    "on-click-right": "$HOME/dotfiles/.config/hypr/UserScripts/SystemOptions.sh",
+    "on-click-right": "$HOME/dotfiles/.config/hypr/UserScripts/RofiPowerMenu.sh",
 },
       
 "bluetooth": {
@@ -515,9 +515,9 @@
 },
 
 "custom/power": {
-    "format": "⏻ ",
+    "format": "⏻ ",
     "exec": "echo ; echo 󰟡 power",
-	"on-click": "$HOME/dotfiles/.config/hypr/UserScripts/SystemOptions.sh",
+	"on-click": "$HOME/dotfiles/.config/hypr/UserScripts/RofiPowerMenu.sh",
     "interval" : 86400, // once every day
     "tooltip": true,
 },

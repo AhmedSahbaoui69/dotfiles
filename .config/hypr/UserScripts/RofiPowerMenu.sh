@@ -15,10 +15,12 @@ no='N'
 
 # Rofi CMD
 rofi_cmd() {
-	rofi -dmenu \
-		-p "Uptime: $uptime" \
-		-mesg "Uptime: $uptime" \
-		-theme $HOME/dotfiles/.local/share/rofi/themes/power-style.rasi
+ power_profile=$(powerprofilesctl get)
+    rofi -dmenu \
+        -p "Uptime: $uptime" \
+        -mesg "Uptime: $uptime" \
+		-theme-str "textbox-prompt-colon {str: 'Power Profile:  $power_profile';}" \
+        -theme $HOME/dotfiles/.local/share/rofi/themes/power-style.rasi
 }
 
 # Confirmation CMD

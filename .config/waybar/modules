@@ -196,7 +196,7 @@
     "format-time": "{H}h {M}min",
     "tooltip": true,
     "tooltip-format": "{timeTo} {power}w",
-    "on-click-right": "wlogout",
+    "on-click-right": "$HOME/dotfiles/.config/hypr/UserScripts/SystemOptions.sh",
 },
       
 "bluetooth": {
@@ -517,7 +517,7 @@
 "custom/power": {
     "format": "⏻ ",
     "exec": "echo ; echo 󰟡 power",
-	"on-click": "wlogout",
+	"on-click": "$HOME/dotfiles/.config/hypr/UserScripts/SystemOptions.sh",
     "interval" : 86400, // once every day
     "tooltip": true,
 },

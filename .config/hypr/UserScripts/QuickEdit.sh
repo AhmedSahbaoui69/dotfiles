@@ -12,8 +12,7 @@ menu(){
   printf "5. view Monitors\n"
   printf "6. view Laptop-Keybinds\n"
   printf "7. view User-Settings\n"
-  printf "8. view Default-Settings\n"
-  printf "9. view Default-Keybinds\n"
+  printf "8. view Default-Keybinds\n"
 }
 
 main() {
@@ -41,9 +40,6 @@ main() {
             kitty -e nvim "$UserConfigs/UserSettings.conf"
             ;;
         8)
-            kitty -e nvim "$configs/Settings.conf"
-            ;;
-        9)
             kitty -e nvim "$configs/Keybinds.conf"
             ;;
         *)

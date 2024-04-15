@@ -289,3 +289,5 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init --path)"
 fi
 export BAT_THEME=gruvbox
+export CHROME_EXECUTABLE=/usr/bin/chromium
+export ANDROID_HOME=/opt/android-sdk/

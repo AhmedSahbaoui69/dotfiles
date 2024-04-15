@@ -21,8 +21,6 @@
 	],
 	"modules-center": [
 		"clock",
-		"custom/separator#dot-line",
-		"custom/weather",
 	],
 	"modules-right": [
 		"network#speed",

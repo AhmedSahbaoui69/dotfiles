@@ -16,7 +16,7 @@
 		"custom/separator#blank", 
 		"hyprland/workspaces#pacman",
 		"hyprland/window",
-		"custom/swaync",
+		"custom/night",
 		"tray",
 	],
 	"modules-center": [

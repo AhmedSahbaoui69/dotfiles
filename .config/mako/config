@@ -7,3 +7,4 @@ border-color=#74c7ec
 max-icon-size=25
 anchor=top-center
 font=monospace 10
+layer=overlay

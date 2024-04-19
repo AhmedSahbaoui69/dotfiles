@@ -8,7 +8,7 @@
 
 while true; do
     result=$(
-        rofi -dmenu \
+        rofi -dmenu -p "copy" \
             -kb-custom-1 "Control-Delete" \
             -kb-custom-2 "Alt-Delete" \
             -config ~/.config/rofi/config.rasi < <(cliphist list)

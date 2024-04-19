@@ -25,9 +25,9 @@ main() {
   
   # Check if the link is a playlist
   if [[ $link == *playlist* ]]; then
-    mpv --vid=no "$link"
+    mpv --vid=no --volume=100 "$link"
   else
-    mpv --vid=no "$link"
+    mpv --vid=no --volume=100 "$link"
   fi
 }
 

@@ -522,6 +522,14 @@
     "tooltip": true,
 },
 
+"custom/night": {
+    "format": "👁",
+    "exec": "echo ; echo night mode",
+	"on-click": "$HOME/dotfiles/.config/hypr/UserScripts/NightMode.sh",
+    "interval" : 86400, // once every day
+    "tooltip": true,
+},
+
 "custom/swaync": {
     "tooltip":true,     
     "format": "{icon} {}",

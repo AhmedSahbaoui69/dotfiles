@@ -16,7 +16,7 @@ menu(){
 }
 
 main() {
-    choice=$(menu | rofi -dmenu | cut -d. -f1)
+    choice=$(menu | rofi -dmenu -p "edit" | cut -d. -f1)
     case $choice in
         1)
             kitty -e nvim "$UserConfigs/ENVariables.conf"

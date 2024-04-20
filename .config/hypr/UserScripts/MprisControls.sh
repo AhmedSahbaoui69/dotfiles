@@ -16,16 +16,13 @@ selected_player=$(select_player)
 
 # Theme Elements
 player_status=$(playerctl --player="$selected_player" status 2>/dev/null)
-if [[ "$player_status" == "Playing" ]]; then
+if [[ "$player_status" == "Playing" || "$player_status" == "Paused" ]]; then
     artist=$(playerctl --player="$selected_player" metadata artist)
     song=$(playerctl --player="$selected_player" metadata title)
     prompt="$artist"
-    mesg="$song | Playing"
-elif [[ "$player_status" == "Paused" ]]; then
-    artist=$(playerctl --player="$selected_player" metadata artist)
-    song=$(playerctl --player="$selected_player" metadata title)
-    prompt="$artist"
-    mesg="$song | Paused"
+    ts=$(playerctl --player="$selected_player" position --format='{{duration(position)}}')
+    len=$(playerctl --player="$selected_player" metadata --format='{{duration(mpris:length)}}')
+    mesg="$song : $ts / $len"
 else
     prompt='Offline'
     mesg="No music playing"

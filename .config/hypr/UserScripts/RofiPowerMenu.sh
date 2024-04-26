@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
 # CMDs
-uptime="`uptime -p | sed -e 's/up //g'`"
-host=`hostname`
+uptime=$(uptime -p | sed -e 's/up //g')
 
 # Options
 shutdown='⏻ '

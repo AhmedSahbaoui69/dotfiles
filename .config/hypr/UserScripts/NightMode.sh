@@ -2,6 +2,7 @@
 
 # Check if wlsunset is already running
 if pgrep -x "wlsunset" > /dev/null
+
 then
     # If yes kill it
     pkill -x wlsunset

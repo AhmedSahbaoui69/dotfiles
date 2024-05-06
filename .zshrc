@@ -1,8 +1,6 @@
 # ~/.zshrc file for zsh interactive shells.
 
-cowfiles_array=("beavis.zen" "blowfish" "bong" "bud-frogs" "bunny" "cheese" "cower" "daemon" "default" "dragon" "dragon-and-cow" "elephant" "elephant-in-snake" "eyes" "flaming-sheep" "ghostbusters" "head-in" "hellokitty" "kiss" "kitty" "koala" "kosh" "luke-koala" "meow" "milk" "moofasa" "moose" "mutilated" "ren" "satanic" "sheep" "skeleton" "small" "sodomized" "stegosaurus" "stimpy" "supermilker" "surgery" "telebears" "three-eyes" "turkey" "turtle" "tux" "udder" "vader" "vader-koala" "www")
-random_cowfile=${cowfiles_array[$RANDOM % ${#cowfiles_array[@]}]}
-cowsay -f "$random_cowfile" `hyprctl splash`; echo;
+echo
 
 setopt autocd              # change directory just by typing its name
 #setopt correct            # auto correct mistakes
@@ -286,3 +284,19 @@ fi
 export BAT_THEME=gruvbox
 export CHROME_EXECUTABLE=/usr/bin/chromium
 export ANDROID_HOME=/opt/android-sdk/
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/usr/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/usr/etc/profile.d/conda.sh" ]; then
+        . "/usr/etc/profile.d/conda.sh"
+    else
+        export PATH="/usr/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+

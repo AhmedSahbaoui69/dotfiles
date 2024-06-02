@@ -523,11 +523,20 @@
 
 "custom/night": {
     "format": "👁",
-    "exec": "echo ; echo night mode",
+    "exec": "echo ; echo Night Mode",
 	"on-click": "$HOME/dotfiles/.config/hypr/UserScripts/NightMode.sh",
-    "interval" : 86400, // once every day
+    "interval" : 86400,
     "tooltip": true,
 },
+
+"custom/touch-toggle": {
+    "format": "\udb83\udcfe",
+     "exec": "echo ; echo Touch Mode",
+    "on-click": "$HOME/dotfiles/.config/hypr/UserScripts/ToggleTouch.sh",
+    "interval": 86400,
+    "tooltip": false
+},
+
 
 "custom/swaync": {
     "tooltip":true,     

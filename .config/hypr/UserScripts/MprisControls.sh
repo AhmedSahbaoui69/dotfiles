@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 # List available players using Rofi
 select_player() {
@@ -18,6 +18,9 @@ selected_player=$(select_player)
 player_status=$(playerctl --player="$selected_player" status 2>/dev/null)
 if [[ "$player_status" == "Playing" || "$player_status" == "Paused" ]]; then
     artist=$(playerctl --player="$selected_player" metadata artist)
+    if [[ -z "$artist" ]]; then
+        artist="$selected_player"
+    fi
     song=$(playerctl --player="$selected_player" metadata title)
     prompt="$artist"
     ts=$(playerctl --player="$selected_player" position --format='{{duration(position)}}')

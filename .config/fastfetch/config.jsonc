@@ -1,0 +1,88 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+      "type": "small",
+      "padding": {
+        "top": 1
+      }
+    },
+    "display": {
+      "separator": " "
+    },
+    "modules": [
+      {
+        "key": "╔═══════════╗",
+        "type": "custom"
+      },
+      {
+        "key": "║ {#31} User    {#keys}║",
+        "type": "title",
+        "format": "{1}"
+      },
+      {
+        "key": "║ {#33}󰅐 Uptime  {#keys}║",
+        "type": "uptime"
+      },
+      {
+        "key": "║ {#34}󰟾 Distro  {#keys}║",
+        "type": "os"
+      },
+      {
+        "key": "║ {#35} Kernel  {#keys}║",
+        "type": "kernel"
+      },
+      {
+        "key": "║ {#36}󰇄 Desktop {#keys}║",
+        "type": "de"
+      },
+      {
+        "key": "║ {#31} Term    {#keys}║",
+        "type": "terminal"
+      },
+      {
+        "key": "║ {#32} Shell   {#keys}║",
+        "type": "shell"
+      },
+      {
+        "key": "║ {#33}󰍛 CPU     {#keys}║",
+        "type": "cpu",
+        "showPeCoreCount": true
+      },
+      {
+        "key": "║ {#37}󰛗 GPU     {#keys}║",
+        "type": "gpu"
+      },
+      {
+        "key": "║ {#34}󰉉 Disk    {#keys}║",
+        "type": "disk",
+        "folders": "/"
+      },
+      {
+        "key": "║ {#35} Memory  {#keys}║",
+        "type": "memory"
+      },
+      {
+        "key": "║ {#36}󰻠 Swap    {#keys}║",
+        "type": "swap"
+      },
+      {
+        "key": "║ {#38}󰩟 Network {#keys}║",
+        "type": "localip",
+        "format": "{1} ({4})"
+      },
+      {
+        "key": "╠═══════════╣",
+        "type": "custom"
+      },
+      {
+        "key": "║ {#39} colors  {#keys}║",
+        "type": "colors",
+        "symbol": "circle"
+      },
+      {
+        "key": "╚═══════════╝",
+        "type": "custom"
+      }
+    ]
+  }
+  

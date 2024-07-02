@@ -39,7 +39,17 @@ menu() {
   printf "$RANDOM_PIC_NAME\n"
 }
 
-swww query || swww init
+# Function to list monitors using Hyprland
+list_monitors() {
+  hyprctl monitors | grep "Monitor" | awk '{print $2}'
+}
+
+select_monitor() {
+  local monitors=("All" $(list_monitors))
+  local monitor_choice=$(printf "%s\n" "${monitors[@]}" | ${rofi_command} -p "Select Monitor")
+
+  echo "$monitor_choice"
+}
 
 main() {
   choice=$(menu | ${rofi_command})
@@ -51,7 +61,12 @@ main() {
 
   # Random choice case
   if [ "$choice" = "$RANDOM_PIC_NAME" ]; then
-    swww img "${wallDIR}/${RANDOM_PIC}" $SWWW_PARAMS
+    monitor_choice=$(select_monitor)
+    if [[ "$monitor_choice" == "All" ]]; then
+      swww img "${wallDIR}/${RANDOM_PIC}" $SWWW_PARAMS
+    else
+      swww img "${wallDIR}/${RANDOM_PIC}" $SWWW_PARAMS --outputs "$monitor_choice"
+    fi
     exit 0
   fi
 
@@ -66,7 +81,12 @@ main() {
   done
 
   if [[ $pic_index -ne -1 ]]; then
-    swww img "${wallDIR}/${PICS[$pic_index]}" $SWWW_PARAMS
+    monitor_choice=$(select_monitor)
+    if [[ "$monitor_choice" == "All" ]]; then
+      swww img "${wallDIR}/${PICS[$pic_index]}" $SWWW_PARAMS
+    else
+      swww img "${wallDIR}/${PICS[$pic_index]}" $SWWW_PARAMS --outputs "$monitor_choice"
+    fi
   else
     echo "Image not found."
     exit 1
@@ -83,3 +103,4 @@ main
 
 sleep 0.5
 ${SCRIPTSDIR}/Refresh.sh
+

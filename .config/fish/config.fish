@@ -5,6 +5,9 @@ end
 set -U fish_greeting
 hyprctl splash | cowsay 
 
+alias pls "sudo"
+alias yeet "yay -Rns"
+alias adios "shutdown -h now" 
 
 set -Ux PYENV_ROOT $HOME/.pyenv
 fish_add_path $PYENV_ROOT/bin

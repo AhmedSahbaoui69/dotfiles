@@ -18,10 +18,10 @@
 		"hyprland/window",
 		"custom/touch-toggle",
 		"custom/night",
-		"tray",
+		"tray"
 	],
 	"modules-center": [
-		"clock",
+		"clock"
 	],
 	"modules-right": [
 		"network#speed",
@@ -32,7 +32,6 @@
 		"custom/separator#blank_2",
 		"group/audio",
 		"custom/separator#blank_2",
-		"custom/power",
-		],
-	
+		"custom/power"
+		]
 	}

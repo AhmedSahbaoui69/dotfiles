@@ -1,4 +1,4 @@
-# #! /bin/bash
+#!/bin/bash
 
 #----- Optimized bars animation without much CPU usage increase --------
 bar="▁▂▃▄▅▆▇█"

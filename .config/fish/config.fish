@@ -8,8 +8,10 @@ hyprctl splash | cowsay
 alias pls "sudo"
 alias yeet "yay -Rns"
 alias adios "shutdown -h now" 
+alias ls "eza"
 
 set -Ux PYENV_ROOT $HOME/.pyenv
 fish_add_path $PYENV_ROOT/bin
-
 pyenv init - | source
+
+set -gx BROWSER /usr/bin/zen-browser

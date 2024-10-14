@@ -8,6 +8,7 @@
 	"fixed-center": true,
 	"ipc": true,
 	"margin-top": 3,
+  "margin-bottom": 3,
 	"margin-left": 8,
 	"margin-right": 8,
 	
@@ -16,8 +17,10 @@
 		"custom/separator#blank", 
 		"hyprland/workspaces#pacman",
 		"hyprland/window",
-		"custom/touch-toggle",
-		"custom/night",
+    "custom/separator#blank",
+    "custom/touch-toggle",
+    "custom/night",
+		"custom/separator#dot-line",
 		"tray"
 	],
 	"modules-center": [
@@ -25,13 +28,16 @@
 	],
 	"modules-right": [
 		"network#speed",
+		"custom/separator#dot-line",
 		"group/motherboard",
+		"custom/separator#dot-line",
 		"group/laptop",
-		"custom/separator#blank_2",
-		"custom/cava_mviz",
-		"custom/separator#blank_2",
-		"group/audio",
-		"custom/separator#blank_2",
+		"custom/separator#dot-line",
+		"custom/updater",
+		"custom/separator#dot-line",
+    "group/audio",
+		"custom/separator#blank",
+		"custom/separator#dot-line",
 		"custom/power"
 		]
 	}

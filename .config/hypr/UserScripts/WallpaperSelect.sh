@@ -1,7 +1,7 @@
 #!/bin/bash
 # This script for selecting wallpapers (SUPER W)
 
-SCRIPTSDIR="$HOME/.config/hypr/scripts"
+UserScripts="$HOME/.config/hypr/UserScripts"
 
 # WALLPAPERS PATH
 wallDIR="$HOME/Pictures/wallpapers"
@@ -102,5 +102,5 @@ fi
 main
 
 sleep 0.5
-${SCRIPTSDIR}/Refresh.sh
+${UserScripts}/Refresh.sh
 

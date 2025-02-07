@@ -25,5 +25,5 @@ done
 
 # If none of the files were found, you can add a fallback command here
 if [ "$executed" == false ]; then
-  echo "None of the specified files were found. Install a Polkit"
+  notify-send "None of the specified files were found. Install a Polkit"
 fi

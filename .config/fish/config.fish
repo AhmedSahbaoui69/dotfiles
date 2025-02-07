@@ -17,3 +17,4 @@ pyenv init - | source
 
 set -gx BROWSER /usr/bin/zen-browser
 set -gx CRYPTOGRAPHY_OPENSSL_NO_LEGACY true
+set -gx HYPRSHOT_DIR $HOME/Pictures/shots

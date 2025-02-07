@@ -1,35 +1,33 @@
 {
-	"include": "~/.config/waybar/modules",
-	"layer": "top",
-	"exclusive": true,
-	"passthrough": false,
-	"position": "top",
-	"spacing": 6,
-	"fixed-center": true,
-	"ipc": true,
-	"margin-top": 3,
-  	"margin-bottom": 0,
-	"margin-left": 6,
-	"margin-right": 6,
-	
-	"modules-left": [
-		"hyprland/workspaces#pacman",
-		"hyprland/window",
-    	"custom/separator#blank",
-    	"custom/touch-toggle",
-    	"custom/night",
-		"tray"
-	],
-	"modules-center": [
-		"clock"
-	],
-	"modules-right": [
-		"network#speed",
-		"group/motherboard",
-		"group/laptop",
-		"custom/updater",
-    	"group/audio",
-		"custom/separator#blank",
-		"custom/power"
-		]
-	}
+"include": "~/.config/waybar/modules",
+"layer": "top",
+"exclusive": true,
+"passthrough": false,
+"position": "top",
+"spacing": 6,
+"margin-top": 3,
+"margin-bottom": 0,
+"margin-left": 4,
+"margin-right": 4,
+
+"modules-left": [
+	"hyprland/workspaces#pacman",
+	"custom/separator#blank",
+	"hyprland/window",
+	"tray"
+],
+"modules-center": [
+	"clock"
+],
+"modules-right": [
+	"network#speed",
+	"group/motherboard",
+	"custom/night",
+	"custom/touch-toggle",
+	"group/laptop",
+	"custom/updater",
+	"group/audio",
+	"custom/separator#blank",
+	"custom/power"
+]
+}

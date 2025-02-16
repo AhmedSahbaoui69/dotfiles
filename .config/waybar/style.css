@@ -2,10 +2,10 @@
   font-family: "JetBrainsMono Nerd Font";
   font-weight: bold;
   min-height: 0;
-  /* set font-size to 100% if font scaling is set to 1.00 using nwg-look */
   font-size: 97%;
   font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
   padding: 1px;
+  box-shadow: none;
   }
   
   @define-color base   #1e1e2e;
@@ -45,6 +45,14 @@
     background: transparent;
     border-radius: 10px;
   }
+
+  #tray menu{
+    background: rgb(30, 30, 46);
+    border: 1px solid @blue;
+    border-radius: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
   
   window#waybar.hidden {
     opacity: 0.2;
@@ -63,7 +71,6 @@
       padding-left: 4px;
       border-radius: 10px;
   } 
-  
   
   #backlight,
   #battery,

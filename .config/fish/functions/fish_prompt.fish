@@ -1,30 +1,67 @@
-function fish_prompt --description 'Write out the prompt'
-    set -l last_status $status
-    set -l normal (set_color normal)
-    set -l status_color (set_color brgreen)
-    set -l cwd_color (set_color $fish_color_cwd)
-    set -l vcs_color (set_color brpurple)
-    set -l prompt_status ""
+# Theme based on Bira theme from oh-my-zsh: https://github.com/robbyrussell/oh-my-zsh/blob/master/themes/bira.zsh-theme
+# Some code stolen from oh-my-fish clearance theme: https://github.com/bpinto/oh-my-fish/blob/master/themes/clearance/
 
-    # Since we display the prompt on a new line allow the directory names to be longer.
-    set -q fish_prompt_pwd_dir_length
-    or set -lx fish_prompt_pwd_dir_length 0
+function __user_host
+  set -l content 
+  if [ (id -u) = "0" ];
+    echo -n (set_color --bold red)
+  else
+    echo -n (set_color --bold green)
+  end
+  echo -n $USER@(hostname|cut -d . -f 1) (set color normal)
+end
 
-    # Color the prompt differently when we're root
-    set -l suffix '❯'
-    if functions -q fish_is_root_user; and fish_is_root_user
-        if set -q fish_color_cwd_root
-            set cwd_color (set_color $fish_color_cwd_root)
-        end
-        set suffix '#'
+function __current_path
+  echo -n (set_color --bold blue) (pwd) (set_color normal) 
+end
+
+function _git_branch_name
+  echo (command git symbolic-ref HEAD 2> /dev/null | sed -e 's|^refs/heads/||')
+end
+
+function _git_is_dirty
+  echo (command git status -s --ignore-submodules=dirty 2> /dev/null)
+end
+
+function __git_status
+  if [ (_git_branch_name) ]
+    set -l git_branch (_git_branch_name)
+
+    if [ (_git_is_dirty) ]
+      set git_info '<'$git_branch"*"'>'
+    else
+      set git_info '<'$git_branch'>'
     end
 
-    # Color the prompt in red on error
-    if test $last_status -ne 0
-        set status_color (set_color $fish_color_error)
-        set prompt_status $status_color "[" $last_status "]" $normal
-    end
+    echo -n (set_color yellow) $git_info (set_color normal) 
+  end
+end
 
-    echo -s (prompt_login) ' ' $cwd_color (prompt_pwd) $vcs_color (fish_vcs_prompt) $normal ' ' $prompt_status
-    echo -n -s $status_color $suffix ' ' $normal
+function __ruby_version
+  if type "rvm-prompt" > /dev/null 2>&1
+    set ruby_version (rvm-prompt i v g)
+  else if type "rbenv" > /dev/null 2>&1
+    set ruby_version (rbenv version-name)
+  else
+    set ruby_version "system"
+  end
+
+  echo -n (set_color red) ‹$ruby_version› (set_color normal)
+end
+
+function fish_prompt
+  echo -n (set_color white)"╭─"(set_color normal)
+  __user_host
+  __current_path
+  __git_status
+  echo -e ''
+  echo (set_color white)"╰─"(set_color --bold white)"\$ "(set_color normal)
+end
+
+function fish_right_prompt
+  set -l st $status
+
+  if [ $st != 0 ];
+    echo (set_color red) ↵ $st(set_color normal)
+  end
 end

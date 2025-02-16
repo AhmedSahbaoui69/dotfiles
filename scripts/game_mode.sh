@@ -18,9 +18,8 @@ toggle_setting() {
 toggle_setting "decoration" "enabled"
 toggle_setting "animations" "enabled"
 
-if pgrep -x "swww-daemon" > /dev/null; then
+if pgrep -x "hyprpaper" > /dev/null; then
     killall swww-daemon
 else
-    swww-daemon &
-    swww img ~/Pictures/wallpapers/winter-road.jpg --transition-duration 0.5
+    hyprpaper
 fi

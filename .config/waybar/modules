@@ -53,6 +53,12 @@
     "on-scroll-down": "brightnessctl set 1%-",
   },
 
+  "custom/cava": {
+    "exec": "~/.config/hypr/UserScripts/WaybarCava.sh",
+    "format": "{}"
+  },
+
+
   "battery": {
     "align": 0,
     "rotate": 0,
@@ -204,7 +210,7 @@
     },
     "scroll-step": 5.0,
     "on-click": "~/.config/hypr/UserScripts/Volume.sh --toggle",
-    "on-click-right": "kitty -e pulsemixer",
+    "on-click-right": "kitty --class pulsemixer -e pulsemixer",
     "on-scroll-up": "~/.config/hypr/UserScripts//Volume.sh --inc",
     "on-scroll-down": "~/.config/hypr/UserScripts/Volume.sh --dec",
     "tooltip-format": "{icon} {desc} | {volume}%",
@@ -216,7 +222,7 @@
     "format-source": " {volume}%",
     "format-source-muted": "",
     "on-click": "~/.config/hypr/UserScripts/Volume.sh --toggle-mic",
-    "on-click-right": "kitty -e pulsemixer",
+    "on-click-right": "kitty --class pulsemixer -e pulsemixer",
     "on-scroll-up": "~/.config/hypr/UserScripts/Volume.sh --mic-inc",
     "on-scroll-down": "~/.config/hypr/UserScripts/Volume.sh --mic-dec",
     "tooltip-format": "{source_desc} | {source_volume}%",
@@ -257,7 +263,7 @@
   "custom/power": {
     "format": "⏻ ",
     "exec": "echo ; echo 󰟡 power",
-    "on-click": "$HOME/dotfiles/.config/hypr/UserScripts/RofiPowerMenu.sh",
+    "on-click": "$HOME/.config/hypr/UserScripts/RofiPowerMenu.sh",
     "interval" : "once",
     "tooltip": true
   },
@@ -265,18 +271,31 @@
   "custom/night": {
     "format": "{}",
     "return-type": "json",
-    "exec": "$HOME/dotfiles/.config/hypr/UserScripts/NightMode.sh",
-    "on-click": "$HOME/dotfiles/.config/hypr/UserScripts/NightMode.sh toggle && pkill -SIGRTMIN+10 waybar",
+    "exec": "$HOME/.config/hypr/UserScripts/NightMode.sh",
+    "on-click": "$HOME/.config/hypr/UserScripts/NightMode.sh toggle && pkill -SIGRTMIN+10 waybar",
     "signal": 10,
-    "tooltip": true
+    "tooltip": true,
+    "tooltip-format": "Night Mode"
   },
-   "custom/touch-toggle": {
+
+  "custom/touch-toggle": {
     "format": "{}",
     "return-type": "json",
-    "exec": "$HOME/dotfiles/.config/hypr/UserScripts/ToggleTouch.sh",
-    "on-click": "$HOME/dotfiles/.config/hypr/UserScripts/ToggleTouch.sh toggle && pkill -SIGRTMIN+11 waybar",
+    "exec": "$HOME/.config/hypr/UserScripts/ToggleTouch.sh",
+    "on-click": "$HOME/.config/hypr/UserScripts/ToggleTouch.sh toggle && pkill -SIGRTMIN+11 waybar",
     "signal": 11,
-    "tooltip": true
+    "tooltip": true,
+    "tooltip-format": "Touch Mode"
+  },
+
+  "custom/game-mode": {
+    "format": "{}",
+    "return-type": "json",
+    "exec": "$HOME/.config/hypr/UserScripts/GameMode.sh",
+    "on-click": "$HOME/.config/hypr/UserScripts/GameMode.sh toggle && pkill -SIGRTMIN+12 waybar",
+    "signal": 12,
+    "tooltip": true,
+    "tooltip-format": "Game Mode",
   },
 
   "custom/updater":{
@@ -305,22 +324,5 @@
     "tooltip": false
   },
 
-  "custom/separator#blank": {
-    "format": "",
-    "interval": "once",
-    "tooltip": false
-  },
-
-  "custom/separator#blank_2": {
-    "format": " ",
-    "interval": "once",
-    "tooltip": false
-  },
-
-  "custom/separator#blank_3": {
-    "format": " ",
-    "interval": "once",
-    "tooltip": false
-  }
 
 }

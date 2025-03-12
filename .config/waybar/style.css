@@ -48,7 +48,7 @@
 
   #tray menu{
     background: rgb(30, 30, 46);
-    border: 1px solid @blue;
+    border: 2px solid @blue;
     border-radius: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -98,6 +98,13 @@
   #backlight {
     color: @blue;
   }
+
+
+  #custom-cava {
+    color: @red;
+    padding-right: 6px;
+    padding-left: 6px;
+  }
   
   #battery {
     color: @green;
@@ -129,21 +136,23 @@
     font-size: 13px;   
   }
 
-  #custom-touch-toggle{
+  #custom-game-mode {
+    color: @green;
+    font-size: 15px;   
+  }
+
+  #custom-touch-toggle {
     color: @yellow;
     transition: all 0.2s ease-in-out;
   }
 
-  #custom-touch-toggle:hover {
+  #custom-touch-toggle:hover, 
+  #custom-updater {
     color: @red;
   }
 
   #cpu {
     color: @green;
-  }
-  
-  #custom-updater {
-    color: @red;
   }
   
   #memory {
@@ -193,8 +202,8 @@
       border-radius: 10px;
   }
   
-  #workspaces button.active {
-      color: @peach;
+  #workspaces button.active{
+    color: @peach;
     border-radius: 10px;
     padding-left: 8px;
     padding-right: 8px;
@@ -204,23 +213,7 @@
   
   #workspaces button.urgent {
       color: @red;
-       border-radius: 0px;
-  }
-  
-  #taskbar button.active {
-      padding-left: 2px;
-      padding-right: 2px;
-      padding-top: 0px;
-      padding-bottom: 0px;
-      animation: gradient_f 20s ease-in infinite;
-      transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
-  }
-  
-  #taskbar button:hover {
-      padding-top: 0px;
-      padding-bottom: 0px;
-      animation: gradient_f 20s ease-in infinite;
-      transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+      border-radius: 0px;
   }
   
   #custom-power {

@@ -1,6 +1,3 @@
-# Theme based on Bira theme from oh-my-zsh: https://github.com/robbyrussell/oh-my-zsh/blob/master/themes/bira.zsh-theme
-# Some code stolen from oh-my-fish clearance theme: https://github.com/bpinto/oh-my-fish/blob/master/themes/clearance/
-
 function __user_host
   set -l content 
   if [ (id -u) = "0" ];
@@ -28,25 +25,41 @@ function __git_status
     set -l git_branch (_git_branch_name)
 
     if [ (_git_is_dirty) ]
-      set git_info '<'$git_branch"*"'>'
+      set git_info '‹'$git_branch"*"'›'
     else
-      set git_info '<'$git_branch'>'
+      set git_info '‹'$git_branch'›'
     end
 
     echo -n (set_color yellow) $git_info (set_color normal) 
   end
 end
 
-function __ruby_version
-  if type "rvm-prompt" > /dev/null 2>&1
-    set ruby_version (rvm-prompt i v g)
-  else if type "rbenv" > /dev/null 2>&1
-    set ruby_version (rbenv version-name)
-  else
-    set ruby_version "system"
+function __python_version
+  # Check if Python is installed
+  if not type -q python
+    return
   end
 
-  echo -n (set_color red) ‹$ruby_version› (set_color normal)
+  # Get Python version
+  set -l python_version (python -V 2>&1 | string split ' ')[2]
+  
+  # Initialize environment name
+  set -l env_name
+
+  # Check for Conda environment
+  if test -n "$CONDA_DEFAULT_ENV"
+    set env_name "$CONDA_DEFAULT_ENV"
+  # Check for Python virtual environment
+  else if test -n "$VIRTUAL_ENV"
+    set env_name (basename "$VIRTUAL_ENV")
+  end
+
+  # Format output
+  if test -n "$env_name"
+    echo -n (set_color red) ‹"$env_name $python_version"› (set_color normal)
+  else
+    echo -n (set_color red) ‹"$python_version"› (set_color normal)
+  end
 end
 
 function fish_prompt
@@ -54,6 +67,7 @@ function fish_prompt
   __user_host
   __current_path
   __git_status
+  __python_version  # Display Python info
   echo -e ''
   echo (set_color white)"╰─"(set_color --bold white)"\$ "(set_color normal)
 end

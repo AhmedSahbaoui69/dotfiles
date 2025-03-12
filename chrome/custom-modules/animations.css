@@ -1,0 +1,83 @@
+/* Trackpad navigation gesture */
+.browserStack browser{
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1) 0.1s !important;
+}
+.browserStack:has(#historySwipeAnimationPreviousArrow:not([style="translate: none;"]  )) browser  {
+    scale: 0.95 !important;
+    transform: translateX(2%) !important;    
+    border-radius: 10px !important;
+}
+.browserStack:has(#historySwipeAnimationNextArrow:not([style="translate: none;"]  )) browser  {
+    scale: 0.95 !important;
+    transform: translateX(-2%) !important;  
+    border-radius: 10px !important;
+}
+
+
+/* URL bar page animation */
+#browser:has(#urlbar[open][zen-floating-urlbar="true"]) #tabbrowser-tabpanels {
+    pointer-events: none;
+    filter: blur(5px) brightness(70%) !important;
+    transition: all 0.2s ease-in-out !important;
+  } 
+#urlbar[open][zen-floating-urlbar="true"] #urlbar-background {
+    border-radius: 1em !important;
+}
+#urlbar {
+  transition: none !important;
+}
+
+
+/* Sidebar Animation */
+#sidebar-box:not([hidden="true"]) {
+    animation: slidein 0.3s forwards;
+}
+@keyframes slidein {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+
+/* Tab switch animation */
+#tabbrowser-arrowscrollbox,
+tab {
+  transition: all 0.3s ease-in-out !important;
+}
+tab:not([zen-essential="true"]):not([multiselected="true"]) .tab-background {
+  transition: all 0.3s ease-in-out !important;
+  scale: 0 !important;
+}
+tab:not([zen-essential="true"]) .tab-background[selected] {
+  scale: 1 !important;
+}
+#tabbrowser-tabpanels
+  > hbox:not([zen-split="true"]):not(:has(.zen-glance-background)) {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.35), filter 0.45s ease-in-out , opacity 0.35s ease-in-out !important;
+  scale: 0.95 !important;
+}
+#tabbrowser-tabpanels > hbox.deck-selected:not([zen-split="true"]) {
+  scale: 1 !important;
+}
+
+
+/* Loading tab animation */
+tab[busy] {
+    scale: 0.95 !important;
+    animation: bounce 0.3s infinite alternate ease-in-out;
+    .tab-background {
+      opacity: 0.2 !important;
+    }
+}
+@keyframes bounce {
+    from {
+        transform: translateY(-2px);
+    }
+    to {
+        transform: translateY(2px);
+    }
+}
+

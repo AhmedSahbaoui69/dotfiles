@@ -11,10 +11,8 @@
 
 * {
     font:   "JetBrains Mono Nerd Font 10";
-
     background-color:   transparent;
     text-color:         @fg0;
-
     margin:     0px;
     padding:    0px;
     spacing:    0px;
@@ -23,7 +21,7 @@
 window {
     location:       center;
     width:          480;
-    border-radius:  5px;
+    border-radius:  10px;
     border: 2px;
     border-color: @bg3;
     background-color:   @bg0;
@@ -98,3 +96,4 @@ element-icon {
 element-text {
     text-color: inherit;
 }
+

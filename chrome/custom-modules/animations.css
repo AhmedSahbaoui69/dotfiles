@@ -28,20 +28,6 @@
 }
 
 
-/* Sidebar Animation */
-#sidebar-box:not([hidden="true"]) {
-    animation: slidein 0.3s forwards;
-}
-@keyframes slidein {
-    from {
-        transform: translateX(100%);
-    }
-    to {
-        transform: translateX(0);
-    }
-}
-
-
 /* Tab switch animation */
 #tabbrowser-arrowscrollbox,
 tab {
@@ -80,4 +66,3 @@ tab[busy] {
         transform: translateY(2px);
     }
 }
-

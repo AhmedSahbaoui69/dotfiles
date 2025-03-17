@@ -14,12 +14,15 @@ no='N'
 
 # Rofi CMD
 rofi_cmd() {
- power_profile=$(powerprofilesctl get)
+    # Get the current CPU power state
+    power_profile=$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor)
+
+    # Run rofi with the determined power profile
     rofi -dmenu \
         -p "Uptime: $uptime" \
         -mesg "Uptime: $uptime" \
-		-theme-str "textbox-prompt-colon {str: 'Power Profile:  $power_profile';}" \
-        -theme $HOME/dotfiles/.local/share/rofi/themes/power-style.rasi
+        -theme-str "textbox-prompt-colon {str: 'Power Profile:  $power_profile';}" \
+        -theme "$HOME/dotfiles/.local/share/rofi/themes/power-style.rasi"
 }
 
 # Confirmation CMD

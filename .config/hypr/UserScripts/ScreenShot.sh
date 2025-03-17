@@ -1,23 +1,23 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# Get screenshot mode choice
-choice=$(echo -e "󰹑  Screen\n  Window\n󰒉  Region" | rofi -dmenu -p "Choose Screenshot Mode:")
+# Screenshot Directory
+dir="$HOME/Pictures/shots"
 
-# Exit if no mode selected
-[ -z "$choice" ] && exit 1
+# Rofi Configuration
+rofi_cmd() {
+    rofi -theme-str "window {width: 670px;}" \
+        -theme-str "listview {columns: 3; lines: 1;}" \
+        -theme-str "inputbar { enabled: false; }" \
+        -theme-str "element-text { horizontal-align: 0.41; font: \"feather bold 64\";}" \
+        -dmenu \
+        -mesg "$dir" \
+        -markup-rows
+}
 
-# Take screenshot immediately after mode selection
-case "$choice" in
-    "󰹑  Screen")
-        hyprshot -m output -o $HOME/Pictures/shots/
-        ;;
-    "  Window")
-        hyprshot -m window -o $HOME/Pictures/shots/
-        ;;
-    "󰒉  Region")
-        hyprshot -m region -o $HOME/Pictures/shots/
-        ;;
-    *)
-        exit 1
-        ;;
+# Rofi Menu Options
+chosen=$(echo -e "󰹑\n\n󰒉" | rofi_cmd)
+case $chosen in
+    "󰹑") hyprshot -m output -o "$dir" ;;
+    "") hyprshot -m window -o "$dir" ;;
+    "󰒉") hyprshot -m region -o "$dir" ;;
 esac

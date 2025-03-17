@@ -7,8 +7,9 @@ ICON_GAME_ON="󰓅 "  # Game Mode ON
 ICON_GAME_OFF="󰌪 " # Game Mode OFF
 
 # Check if Game Mode (Performance) is enabled
-current_profile=$(powerprofilesctl get)
-if [[ "$current_profile" == "performance" ]]; then
+ current_profile=$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor)
+
+ if [[ "$current_profile" == "performance" ]]; then
     ICON="$ICON_GAME_ON"
 else
     ICON="$ICON_GAME_OFF"
@@ -50,15 +51,13 @@ if [[ $1 == "toggle" ]]; then
   toggle_setting "animations" "enabled"
   toggle_opacity
 
-  current_profile=$(powerprofilesctl get)
+  current_profile=$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor)
   if [[ "$current_profile" != "performance" ]]; then
-      cpupower-gui -p > /dev/null
-      powerprofilesctl set performance
+      pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY cpupower frequency-set -g performance > /dev/null 
       notify-send "Game Mode Activated"
       ICON="$ICON_GAME_ON"
   else
-      cpupower-gui -b > /dev/null
-      powerprofilesctl set balanced
+      pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY cpupower frequency-set -g powersave > /dev/null 
       notify-send "Game Mode Deactivated"
       ICON="$ICON_GAME_OFF"
   fi

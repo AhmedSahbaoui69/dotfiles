@@ -12,18 +12,12 @@
   }
 
   
-/* Configure Inset Sidebar Border */
-#sidebar-box {
-    border: inset 0.5px #585b70 !important;
-    position: relative;
-}
-
-
-/* Configure Inset border for the actual tab */
-.browserStack browser {
+/* Configure Inset Border for Sidebar, Web Panel and Browser Stack */
+.browserStack browser,
+#zen-sidebar-web-panel-wrapper, 
+#sidebar-box{
     box-shadow: none !important;
     position: relative;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1) 0.1s !important;
     border-radius: 10px;
     border: inset 0.5px #585b70 !important;
 }
@@ -62,7 +56,7 @@
 #tabbrowser-tabs {
     & .tabbrowser-tab {
         &[selected] .tab-background {
-            background: rgba(74, 144, 226, 0.4) !important;
+            background: rgba(74, 144, 226, 0.5) !important;
         }
     }
 }
@@ -72,6 +66,10 @@
 #urlbar:not([focused]) .urlbar-input {
     text-align: center !important;
 }
+/* URL Bar Text Color */
+.urlbarView-row-inner[aria-selected="true"] {
+    color: #b4befe !important;
+}
 
 
 /* Hide Unnecessary URL Bar Buttons */
@@ -80,7 +78,19 @@
 #reader-mode-button {
     display: none !important;
 }
-#urlbar:not([focused]) #identity-permission-box, 
-#urlbar:not([focused]) #identity-box {
+#urlbar:not(:hover):not(:focus-within) #identity-permission-box:not(:hover):not(:focus-within) {
     display: none !important;
+}
+
+
+/* Customize Dev Tools */
+.devtools-toolbox-bottom-iframe {
+    box-shadow: none !important;
+    position: relative;
+    border-radius: 10px;
+    border: inset 0.5px #585b70 !important;
+}
+.devtools-horizontal-splitter {
+    margin-top: 4px !important;
+    opacity: 0;
 }

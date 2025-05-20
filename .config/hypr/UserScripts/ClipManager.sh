@@ -1,40 +1,18 @@
 #!/bin/bash
 
-# Clipboard Manager. This script uses cliphist, rofi, and wl-copy.
-
-# Actions:
-# CTRL Del to delete an entry
-# ALT Del to wipe clipboard contents
+# Clipboard Manager using tofi, cliphist, and wl-copy.
+# Note: Custom keybindings for delete actions have been removed
+#       because tofi does not natively support them.
 
 while true; do
-    result=$(
-        rofi -dmenu -p "copy" \
-            -kb-custom-1 "Control-Delete" \
-            -kb-custom-2 "Alt-Delete" \
-            -config ~/.config/rofi/config.rasi < <(cliphist list)
-    )
+    result=$(cliphist list | tofi --prompt-text "" --fuzzy-match true --config ~/.config/tofi/config.conf --padding-left 25% --padding-right 25% --padding-top 14% --num-results 15 --font-size 15)
 
-    case "$?" in
-        1)
-            exit
-            ;;
-        0)
-            case "$result" in
-                "")
-                    continue
-                    ;;
-                *)
-                    cliphist decode <<<"$result" | wl-copy
-                    exit
-                    ;;
-            esac
-            ;;
-        10)
-            cliphist delete <<<"$result"
-            ;;
-        11)
-            cliphist wipe
-            ;;
-    esac
+    # Exit if tofi was cancelled (nonzero exit status)
+    if [ $? -ne 0 ]; then
+        exit
+    fi
+
+    # Copy the decoded clip history entry to the clipboard.
+    cliphist decode <<<"$result" | wl-copy
+    exit
 done
-

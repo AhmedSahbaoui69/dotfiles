@@ -2,7 +2,7 @@
 
 # Scripts for volume controls for audio and mic 
 
-iDIR="$HOME/.config/swaync/icons"
+iDIR="$HOME/.config/mako/icons"
 
 # Get Volume
 get_volume() {
@@ -19,7 +19,7 @@ get_icon() {
     current=$(get_volume)
     if [[ "$current" == "Muted" ]]; then
         echo "$iDIR/volume-mute.png"
-    elif [[ "${current%\%}" -le 30 ]]; then
+    elif [[ "${current%\%}" -le 20 ]]; then
         echo "$iDIR/volume-low.png"
     elif [[ "${current%\%}" -le 60 ]]; then
         echo "$iDIR/volume-mid.png"
@@ -124,14 +124,6 @@ elif [[ "$1" == "--toggle" ]]; then
 	toggle_mute
 elif [[ "$1" == "--toggle-mic" ]]; then
 	toggle_mic
-elif [[ "$1" == "--get-icon" ]]; then
-	get_icon
-elif [[ "$1" == "--get-mic-icon" ]]; then
-	get_mic_icon
-elif [[ "$1" == "--mic-inc" ]]; then
-	inc_mic_volume
-elif [[ "$1" == "--mic-dec" ]]; then
-	dec_mic_volume
 else
 	get_volume
 fi

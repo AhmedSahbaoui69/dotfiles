@@ -2,5 +2,4 @@
 
 configuration {
     icon-theme: "Tela-circle-blue-dark";
-    show-icons: true;
 }

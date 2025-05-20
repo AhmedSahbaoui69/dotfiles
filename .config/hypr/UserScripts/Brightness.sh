@@ -2,8 +2,7 @@
 
 # Script for Monitor backlights (if supported) using brightnessctl
 
-iDIR="$HOME/.config/swaync/icons"
-notification_timeout=1000
+iDIR="$HOME/.config/mako/icons"
 
 # Get brightness
 get_backlight() {

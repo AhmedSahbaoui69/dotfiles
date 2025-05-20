@@ -1,11 +1,11 @@
 {
   "hyprland/workspaces#pacman": {
     "disable-scroll": true,
-    "active-only":false,
+    "active-only": false,
     "all-outputs": true,
     "on-click": "activate",
     "show-special": false,
-    "persistent-workspaces":{
+    "persistent-workspaces": {
       "1": [],
       "2": [],
       "3": [],
@@ -16,10 +16,9 @@
     "format-icons": {
       "active": " 󰮯 ",
       "default": "󰊠",
-      "persistent":"󰊠"
+      "persistent": "󰊠"
     }
   },
-
   "group/motherboard": {
     "orientation": "horizontal",
     "modules": [
@@ -28,7 +27,6 @@
       "temperature"
     ]
   },
-
   "group/laptop": {
     "orientation": "horizontal",
     "modules": [
@@ -36,7 +34,6 @@
       "battery"
     ]
   },
-
   "group/audio": {
     "orientation": "horizontal",
     "modules": [
@@ -44,30 +41,31 @@
       "pulseaudio#microphone"
     ]
   },
-
   "backlight": {
     "device": "intel_backlight",
     "format": "{icon} {percent}%",
-    "format-icons": ["󰃞", "󰃟", "󰃠"],
+    "format-icons": [
+      "󰃞",
+      "󰃟",
+      "󰃠"
+    ],
     "on-scroll-up": "brightnessctl set 1%+",
-    "on-scroll-down": "brightnessctl set 1%-",
+    "on-scroll-down": "brightnessctl set 1%-"
   },
-
   "custom/cava": {
     "exec": "~/.config/hypr/UserScripts/WaybarCava.sh",
+    "on-click": "/home/hmed/Documents/python-projects/gtk-mpris/run.sh",
     "format": "{}"
   },
-
-
   "battery": {
     "align": 0,
     "rotate": 0,
     "full-at": 100,
     "design-capacity": false,
     "states": {
-    "good": 95,
-    "warning": 30,
-    "critical": 15
+      "good": 95,
+      "warning": 30,
+      "critical": 15
     },
     "format": "{icon} {capacity}%",
     "format-charging": " {capacity}%",
@@ -75,12 +73,23 @@
     "format-alt-click": "click",
     "format-full": "{icon} Full",
     "format-alt": "{icon} {time}",
-    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "format-icons": [
+      "󰂎",
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
+    ],
     "format-time": "{H}h {M}min",
     "tooltip": true,
     "tooltip-format": "{timeTo} {power}w"
   },
-
   "bluetooth": {
     "format": "",
     "format-disabled": "󰂳",
@@ -91,62 +100,53 @@
     "tooltip": true,
     "on-click": "blueman-manager"
   },
-
   "clock": {
     "interval": 1,
     "format": "{:%I:%M:%S %p}",
-    "tooltip-format": "<tt><small>{calendar}</small></tt>",
-    "calendar": {
-    "mode" : "year",
-    "mode-mon-col" : 3,
-    "weeks-pos" : "right",
-    "on-scroll" : 1,
-    "format": {
-    "months": "<span color='#ffead3'><b>{}</b></span>",
-    "days": "<span color='#ecc6d9'><b>{}</b></span>",
-    "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
-    "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-    "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
-          }
-          }
-    },
-    "actions": {
+    "tooltip-format": "{:%D}",
+    "on-click":"~/dotfiles/.config/hypr/UserScripts/gsimplecal.sh"
+  },
+  "actions": {
     "on-click-right": "mode",
     "on-click-forward": "tz_up",
     "on-click-backward": "tz_down",
     "on-scroll-up": "shift_up",
     "on-scroll-down": "shift_down"
   },
-
   "cpu": {
     "format": "{usage}% 󰾆",
     "interval": 2,
     "format-alt-click": "click",
     "format-alt": "{icon0}{icon1}{icon2}{icon3} {usage:>2}% 󰾆",
-    "format-icons": [" ", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+    "format-icons": [
+      " ",
+      "▂",
+      "▃",
+      "▄",
+      "▅",
+      "▆",
+      "▇",
+      "█"
+    ],
     "on-click-right": "flatpak run io.missioncenter.MissionCenter"
   },
-
-
   "disk": {
     "interval": 30,
     "path": "/",
     "format": "{percentage_used}% 󰋊",
     "tooltip-format": "{used} used out of {total} on {path} ({percentage_used}%)"
   },
-
   "hyprland/window": {
     "max-length": 60,
     "min-length": 60,
     "format": "{}",
     "separate-outputs": true,
-    "offscreen-css" : true,
+    "offscreen-css": true,
     "offscreen-css-text": "(inactive)",
     "rewrite": {
       "(.*) — Zen Browser": " $1"
     }
   },
-
   "hyprland/language": {
     "format": "{}",
     "format-en": "US",
@@ -154,7 +154,6 @@
     "keyboard-name": "at-translated-set-2-keyboard",
     "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next"
   },
-
   "memory": {
     "interval": 2,
     "format": "{used:0.1f}G 󰍛",
@@ -164,7 +163,6 @@
     "tooltip-format": "{used:0.1f}GB/{total:0.1f}G",
     "on-click-right": "kitty --title btop sh -c 'btop'"
   },
-
   "network": {
     "format": "{ifname}",
     "format-wifi": "{icon}",
@@ -175,25 +173,35 @@
     "tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
     "tooltip-format-ethernet": "{ifname} 󰌘",
     "tooltip-format-disconnected": "󰌙 Disconnected",
-    "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"]
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ]
   },
-
   "network#speed": {
     "interval": 1,
     "format": "{ifname}",
     "format-wifi": " {bandwidthUpBytes}  {bandwidthDownBytes}",
-    "format-ethernet": "󰌘  {bandwidthUpBytes}  {bandwidthDownBytes}",
+    "format-ethernet": " {bandwidthUpBytes}  {bandwidthDownBytes}",
     "format-disconnected": "󰌙",
     "tooltip-format": "{ipaddr}",
     "format-linked": "󰈁 {ifname} (No IP)",
     "tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
     "tooltip-format-ethernet": "{ifname} 󰌘",
     "tooltip-format-disconnected": "󰌙 Disconnected",
-    "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
-    "max-length": 20,
-    "min-length": 20
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
+    "max-length": 22,
+    "min-length": 22
   },
-
   "pulseaudio": {
     "format": "{icon} {volume}%",
     "format-bluetooth": "{icon} 󰂰 {volume}%",
@@ -205,8 +213,15 @@
       "phone": "",
       "portable": "",
       "car": "",
-    "default": ["", "", "󰕾", ""],
-    "ignored-sinks": ["Easy Effects Sink"]
+      "default": [
+        "",
+        "",
+        "󰕾",
+        ""
+      ],
+      "ignored-sinks": [
+        "Easy Effects Sink"
+      ]
     },
     "scroll-step": 5.0,
     "on-click": "~/.config/hypr/UserScripts/Volume.sh --toggle",
@@ -216,7 +231,6 @@
     "tooltip-format": "{icon} {desc} | {volume}%",
     "smooth-scrolling-threshold": 1
   },
-
   "pulseaudio#microphone": {
     "format": "{format_source}",
     "format-source": " {volume}%",
@@ -228,7 +242,6 @@
     "tooltip-format": "{source_desc} | {source_volume}%",
     "scroll-step": 5
   },
-
   "temperature": {
     "interval": 2,
     "tooltip": true,
@@ -238,15 +251,15 @@
     "critical-threshold": 80,
     "format-critical": "{temperatureC}°C {icon}",
     "format": "{temperatureC}°C {icon}",
-    "format-icons": ["󰈸"],
+    "format-icons": [
+      "󰈸"
+    ],
     "on-click-right": "cpupower-gui"
   },
-
   "tray": {
     "icon-size": 15,
     "spacing": 8
   },
-
   "wlr/taskbar": {
     "format": "{icon}",
     "icon-size": 12,
@@ -259,15 +272,13 @@
       "rofi"
     ]
   },
-
   "custom/power": {
     "format": "⏻ ",
     "exec": "echo ; echo 󰟡 power",
-    "on-click": "$HOME/.config/hypr/UserScripts/RofiPowerMenu.sh",
-    "interval" : "once",
+    "on-click": "$HOME/.config/hypr/UserScripts/TofiPowerMenu.sh",
+    "interval": "once",
     "tooltip": true
   },
-
   "custom/night": {
     "format": "{}",
     "return-type": "json",
@@ -277,7 +288,6 @@
     "tooltip": true,
     "tooltip-format": "Night Mode"
   },
-
   "custom/touch-toggle": {
     "format": "{}",
     "return-type": "json",
@@ -287,7 +297,6 @@
     "tooltip": true,
     "tooltip-format": "Touch Mode"
   },
-
   "custom/game-mode": {
     "format": "{}",
     "return-type": "json",
@@ -295,34 +304,28 @@
     "on-click": "$HOME/.config/hypr/UserScripts/GameMode.sh toggle && pkill -SIGRTMIN+12 waybar",
     "signal": 12,
     "tooltip": true,
-    "tooltip-format": "Game Mode",
+    "tooltip-format": "Game Mode"
   },
-
-  "custom/updater":{
+  "custom/updater": {
     "format": " {}",
     "exec": "checkupdates | wc -l",
     "exec-if": "[[ $(checkupdates | wc -l) ]]",
     "interval": 15,
     "on-click": "kitty -T update yay -Syu && notify-send 'The system has been updated'"
   },
-
   "custom/separator#dot": {
     "format": "",
     "interval": "once",
     "tooltip": false
   },
-
   "custom/separator#dot-line": {
     "format": "",
     "interval": "once",
     "tooltip": false
   },
-
   "custom/separator#line": {
     "format": "|",
     "interval": "once",
     "tooltip": false
-  },
-
-
+  }
 }

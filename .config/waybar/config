@@ -1,81 +1,75 @@
 [
-// EXTERNAL DISPLAY
-  {
-	"include": "~/.config/waybar/modules",
-	"layer": "top",
-	"exclusive": true,
-	"passthrough": false,
-	"position": "top",
-	"spacing": 6,
-	"fixed-center": true,
-	"output": "HDMI-A-1",
-	"margin-top": 3,
-	"margin-bottom": 0,
-	"margin-left": 4,
-	"margin-right": 4,
-
-	"modules-left": [
-		"hyprland/workspaces#pacman",
-		"custom/separator#blank",
-		"hyprland/window",
-	  "custom/updater",
-		"tray"
-	],
-
-	"modules-center": [
-		"clock"
-	],
-
-	"modules-right": [
-		"network#speed",
-		"group/motherboard",
-	  "custom/night",
-		"custom/touch-toggle",
-		"group/laptop",
-    "custom/game-mode",		
-    "group/audio",
-		"custom/power"
-	]
-},
-	
-// PRIMARY DISPLAY
-{
-	"include": "~/.config/waybar/modules",
-	"layer": "top",
-	"exclusive": true,
-	"passthrough": false,
-	"position": "top",
-	"spacing": 6,
-	"fixed-center": true,
-	"output":"eDP-1",
-	"margin-top": 3,
-	"margin-bottom": 0,
-	"margin-left": 4,
-	"margin-right": 4,
-
-	"modules-left": [
-		"hyprland/workspaces#pacman",
-		"custom/separator#blank",
-		"hyprland/window",
-	  "custom/updater",
-		"tray"
-	],
-
-	"modules-center": [
-		"clock"
-	],
-
-	"modules-right": [
-		"network#speed",
-		"group/motherboard",
-	  "custom/night",
-		"custom/touch-toggle",
-		"group/laptop",
-	  "custom/game-mode",
-    "custom/separator#blank",
-	  "custom/cava",
-	  "custom/separator#blank",
-		"group/audio",
-		"custom/power"
-	]
-}]
+	// EXTERNAL DISPLAY
+	{
+		"include": "~/.config/waybar/modules",
+		"layer": "top",
+		"exclusive": true,
+		"passthrough": false,
+		"position": "top",
+		"spacing": 6,
+		"fixed-center": true,
+		"output": "HDMI-A-1",
+		"margin-top": 3,
+		"margin-bottom": 0,
+		"margin-left": 4,
+		"margin-right": 4,
+		"modules-left": [
+			"hyprland/workspaces#pacman",
+			"custom/separator#blank",
+			"hyprland/window",
+			"custom/updater",
+			"tray"
+		],
+		"modules-center": [
+			"clock"
+		],
+		"modules-right": [
+			"network#speed",
+			"group/motherboard",
+			"custom/night",
+			"custom/touch-toggle",
+			"group/laptop",
+			"custom/game-mode",
+			"group/audio",
+			"custom/power"
+		]
+	},
+	// PRIMARY DISPLAY
+	{
+		"include": "~/.config/waybar/modules",
+		"layer": "top",
+		"exclusive": true,
+		"passthrough": false,
+		"position": "top",
+		"spacing": 6,
+		"fixed-center": true,
+		"output": "eDP-1",
+		"margin-top": 3,
+		"margin-bottom": 0,
+		"margin-left": 4,
+		"margin-right": 4,
+		"modules-left": [
+			"hyprland/workspaces#pacman",
+			"custom/separator#blank",
+			"hyprland/window",
+			"custom/updater",
+			"tray"
+		],
+		"modules-center": [
+			"clock"
+		],
+		"modules-right": [
+			"network#speed",
+			"group/motherboard",
+			"custom/night",
+			"custom/touch-toggle",
+			"group/laptop",
+			"custom/game-mode",
+			"custom/separator#blank",
+			"custom/cava",
+			"custom/separator#blank",
+			"group/audio",
+			"custom/power"
+		]
+	}
+]

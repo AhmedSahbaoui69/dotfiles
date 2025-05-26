@@ -19,6 +19,7 @@
       "persistent": "󰊠"
     }
   },
+
   "group/motherboard": {
     "orientation": "horizontal",
     "modules": [
@@ -27,6 +28,7 @@
       "temperature"
     ]
   },
+
   "group/laptop": {
     "orientation": "horizontal",
     "modules": [
@@ -34,6 +36,7 @@
       "battery"
     ]
   },
+
   "group/audio": {
     "orientation": "horizontal",
     "modules": [
@@ -41,6 +44,7 @@
       "pulseaudio#microphone"
     ]
   },
+
   "backlight": {
     "device": "intel_backlight",
     "format": "{icon} {percent}%",
@@ -52,11 +56,13 @@
     "on-scroll-up": "brightnessctl set 1%+",
     "on-scroll-down": "brightnessctl set 1%-"
   },
+
   "custom/cava": {
     "exec": "~/.config/hypr/UserScripts/WaybarCava.sh",
     "on-click": "/home/hmed/Documents/python-projects/gtk-mpris/run.sh",
     "format": "{}"
   },
+
   "battery": {
     "align": 0,
     "rotate": 0,
@@ -90,6 +96,7 @@
     "tooltip": true,
     "tooltip-format": "{timeTo} {power}w"
   },
+
   "bluetooth": {
     "format": "",
     "format-disabled": "󰂳",
@@ -100,12 +107,14 @@
     "tooltip": true,
     "on-click": "blueman-manager"
   },
+
   "clock": {
     "interval": 1,
     "format": "{:%I:%M:%S %p}",
     "tooltip-format": "{:%D}",
     "on-click":"~/dotfiles/.config/hypr/UserScripts/gsimplecal.sh"
   },
+
   "actions": {
     "on-click-right": "mode",
     "on-click-forward": "tz_up",
@@ -113,6 +122,7 @@
     "on-scroll-up": "shift_up",
     "on-scroll-down": "shift_down"
   },
+
   "cpu": {
     "format": "{usage}% 󰾆",
     "interval": 2,
@@ -130,12 +140,14 @@
     ],
     "on-click-right": "flatpak run io.missioncenter.MissionCenter"
   },
+
   "disk": {
     "interval": 30,
     "path": "/",
     "format": "{percentage_used}% 󰋊",
     "tooltip-format": "{used} used out of {total} on {path} ({percentage_used}%)"
   },
+
   "hyprland/window": {
     "max-length": 60,
     "min-length": 60,
@@ -144,9 +156,10 @@
     "offscreen-css": true,
     "offscreen-css-text": "(inactive)",
     "rewrite": {
-      "(.*) — Zen Browser": " $1"
+      "(.*) — Zen Browser": "  $1"
     }
   },
+
   "hyprland/language": {
     "format": "{}",
     "format-en": "US",
@@ -154,6 +167,7 @@
     "keyboard-name": "at-translated-set-2-keyboard",
     "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next"
   },
+
   "memory": {
     "interval": 2,
     "format": "{used:0.1f}G 󰍛",
@@ -163,6 +177,7 @@
     "tooltip-format": "{used:0.1f}GB/{total:0.1f}G",
     "on-click-right": "kitty --title btop sh -c 'btop'"
   },
+
   "network": {
     "format": "{ifname}",
     "format-wifi": "{icon}",
@@ -181,17 +196,13 @@
       "󰤨"
     ]
   },
+
   "network#speed": {
     "interval": 1,
     "format": "{ifname}",
     "format-wifi": " {bandwidthUpBytes}  {bandwidthDownBytes}",
     "format-ethernet": " {bandwidthUpBytes}  {bandwidthDownBytes}",
     "format-disconnected": "󰌙",
-    "tooltip-format": "{ipaddr}",
-    "format-linked": "󰈁 {ifname} (No IP)",
-    "tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
-    "tooltip-format-ethernet": "{ifname} 󰌘",
-    "tooltip-format-disconnected": "󰌙 Disconnected",
     "format-icons": [
       "󰤯",
       "󰤟",
@@ -199,9 +210,10 @@
       "󰤥",
       "󰤨"
     ],
-    "max-length": 22,
-    "min-length": 22
+    "max-length": 20,
+    "min-length": 20
   },
+
   "pulseaudio": {
     "format": "{icon} {volume}%",
     "format-bluetooth": "{icon} 󰂰 {volume}%",
@@ -231,6 +243,7 @@
     "tooltip-format": "{icon} {desc} | {volume}%",
     "smooth-scrolling-threshold": 1
   },
+
   "pulseaudio#microphone": {
     "format": "{format_source}",
     "format-source": " {volume}%",
@@ -242,6 +255,7 @@
     "tooltip-format": "{source_desc} | {source_volume}%",
     "scroll-step": 5
   },
+
   "temperature": {
     "interval": 2,
     "tooltip": true,
@@ -256,10 +270,12 @@
     ],
     "on-click-right": "cpupower-gui"
   },
+
   "tray": {
     "icon-size": 15,
     "spacing": 8
   },
+
   "wlr/taskbar": {
     "format": "{icon}",
     "icon-size": 12,
@@ -272,6 +288,7 @@
       "rofi"
     ]
   },
+
   "custom/power": {
     "format": "⏻ ",
     "exec": "echo ; echo 󰟡 power",
@@ -279,6 +296,7 @@
     "interval": "once",
     "tooltip": true
   },
+
   "custom/night": {
     "format": "{}",
     "return-type": "json",
@@ -288,6 +306,7 @@
     "tooltip": true,
     "tooltip-format": "Night Mode"
   },
+
   "custom/touch-toggle": {
     "format": "{}",
     "return-type": "json",
@@ -297,6 +316,7 @@
     "tooltip": true,
     "tooltip-format": "Touch Mode"
   },
+
   "custom/game-mode": {
     "format": "{}",
     "return-type": "json",
@@ -306,6 +326,7 @@
     "tooltip": true,
     "tooltip-format": "Game Mode"
   },
+
   "custom/updater": {
     "format": " {}",
     "exec": "checkupdates | wc -l",
@@ -313,16 +334,19 @@
     "interval": 15,
     "on-click": "kitty -T update yay -Syu && notify-send 'The system has been updated'"
   },
+
   "custom/separator#dot": {
     "format": "",
     "interval": "once",
     "tooltip": false
   },
+
   "custom/separator#dot-line": {
     "format": "",
     "interval": "once",
     "tooltip": false
   },
+
   "custom/separator#line": {
     "format": "|",
     "interval": "once",

@@ -1,71 +1,102 @@
-#!/bin/bash
-# Recursive File Browser using Tofi and Nvim
-browse_dir() {
-    local base_dir="$1"
-    while true; do
-        # Use depth control based on directory
-        if [[ "$base_dir" == "$HOME" || "$base_dir" == "$HOME/"* ]]; then
-            max_depth=4
-        else
-            max_depth=1
-        fi
+#!/bin/dash
+# Recursive File Browser using Tofi and Nvim (dash-compatible)
 
-        # Find directories first and add "/"
-        dirs=$(find -L "$base_dir" -mindepth 1 -maxdepth $max_depth -type d 2>/dev/null | 
-               sed "s|^$base_dir/||" | 
-               awk '{print $0"/"}')
-
-        # Find files and links
-        files=$(find -L "$base_dir" -mindepth 1 -maxdepth $max_depth \( -type f -o -type l \) 2>/dev/null | 
-                sed "s|^$base_dir/||")
-
-        # Combine, sort and add parent directory option
-        entries=$(printf "..\n%s\n%s" "$dirs" "$files" | sort)
-
-        if [ -z "$entries" ]; then
-            echo "No files here." | tofi --prompt-text '' --placeholder-text "Empty Directory"
-            return
-        fi
-
-        # remove duplicate slashes
-        display_path=$(echo "$base_dir/" | tr -s '/')
-
-        # Show selection menu
-        selection=$(printf "%s\n" "$entries" | tofi --prompt-text '' --placeholder-text "$display_path" --config ~/.config/tofi/config.conf --ascii-input true --padding-left 40% --padding-top 33% --prompt-padding 0 --num-results 6)
-        [ -z "$selection" ] && return
-
-        # Handle ".."
-        if [ "$selection" = ".." ]; then
-            base_dir=$(dirname "$base_dir")
-            continue
-        fi
-
-        # Remove trailing slash for path operations
-        clean_selection="${selection%/}"
-        full_path="$base_dir/$clean_selection"
-
-        if [ -d "$full_path" ]; then
-            base_dir="$full_path"
-            continue
-        elif [ -f "$full_path" ] || [ -L "$full_path" ]; then
-            mime_type=$(file --mime-type -b "$full_path")
-
-            # Open specific file types with designated applications
-            if [[ "$mime_type" == image/* ]]; then
-                eog "$full_path" &
-            elif [[ "$mime_type" == application/pdf ]]; then
-                evince "$full_path" &
-            elif [[ "$mime_type" == video/* ]]; then
-                vlc "$full_path" &
-            else
-                if [ -w "$full_path" ]; then
-                    kitty -e nvim "$full_path"
-                else
-                    kitty -e sudo nvim "$full_path"
-                fi
-            fi
-            return
-        fi
-    done
+open_file() {
+  mime=$(file --mime-type -b "$1")
+  case "$mime" in
+  image/*) eog "$1" & ;;
+  application/pdf) evince "$1" & ;;
+  video/*) vlc "$1" & ;;
+  *) [ -w "$1" ] && kitty -e nvim "$1" || kitty -e sudo nvim "$1" ;;
+  esac
 }
+
+get_padding() {
+  [ "$1" -le 50 ] && echo 40 && return
+  [ "$1" -le 100 ] && echo 25 && return
+  echo 10
+}
+
+average_length() {
+  awk '{ total += length } END { print (NR > 0 ? int(total / NR) : 0) }'
+}
+
+browse_dir() {
+  base_dir="$1"
+  while :; do
+    entries=$(
+      printf "..\n"
+      find -L "$base_dir" -mindepth 1 -maxdepth 1 -type d \
+        ! -path "$base_dir/.cache" ! -path "$base_dir/.local/state" ! -name ".venv" 2>/dev/null |
+        sed "s|^$base_dir/||; s|$|/|"
+      find -L "$base_dir" -mindepth 1 -maxdepth 1 \( -type f -o -type l \) \
+        ! -path "$base_dir/.cache/*" ! -path "$base_dir/.local/nvim/*" 2>/dev/null |
+        sed "s|^$base_dir/||" | sort
+    )
+
+    [ -z "$entries" ] && {
+      echo "No files here." | tofi --prompt-text '' --placeholder-text "Empty Directory" \
+        --font /usr/share/fonts/TTF/JetBrainsMono-Regular.ttf --font-size 16
+      return
+    }
+
+    avg_len=$(printf "%s\n" "$entries" | average_length)
+    padding=$(get_padding "$avg_len")
+
+    selection=$(printf "%s\n" "$entries" | tofi --prompt-text '' --placeholder-text "$(echo "$base_dir/" | tr -s '/')" \
+      --config ~/.config/tofi/config.conf --ascii-input true --padding-left "${padding}%" \
+      --padding-top 33% --prompt-padding 0 --num-results 8 \
+      --font /usr/share/fonts/TTF/JetBrainsMono-Regular.ttf --require-match false --font-size 16)
+
+    [ -z "$selection" ] && return
+
+    if echo "$entries" | grep -Fxq "$selection"; then
+      [ "$selection" = ".." ] && {
+        base_dir=$(dirname "$base_dir")
+        continue
+      }
+
+      full_path="$base_dir/$(echo "$selection" | sed 's:/*$::')"
+      [ -d "$full_path" ] && {
+        base_dir="$full_path"
+        continue
+      }
+      [ -f "$full_path" ] || [ -L "$full_path" ] && {
+        open_file "$full_path"
+        return
+      }
+    else
+      results=$(locate -i "$base_dir/**$selection*" 2>/dev/null |
+        grep "^$base_dir/" |
+        grep -vE '/(\.cache|\.git|\.vscode|\.cargo|\.local/state|\.venv)/')
+
+      [ -z "$results" ] && {
+        echo "No results found." | tofi --prompt-text '' --placeholder-text "..." \
+          --font /usr/share/fonts/TTF/JetBrainsMono-Regular.ttf \
+          --config ~/.config/tofi/config.conf --padding-top 33% --padding-left 40% --font-size 16
+        continue
+      }
+
+      avg_len=$(printf "%s\n" "$results" | average_length)
+      search_padding=$(get_padding "$avg_len")
+
+      selected=$(printf "%s\n" "$results" | tofi --prompt-text '' \
+        --placeholder-text "Results matching: $selection" \
+        --config ~/.config/tofi/config.conf --ascii-input true --padding-left "${search_padding}%" \
+        --padding-top 33% --prompt-padding 0 --num-results 8 \
+        --font /usr/share/fonts/TTF/JetBrainsMono-Regular.ttf --font-size 16)
+
+      [ -z "$selected" ] && continue
+      [ -d "$selected" ] && {
+        base_dir="$selected"
+        continue
+      }
+      [ -f "$selected" ] || [ -L "$selected" ] && {
+        open_file "$selected"
+        return
+      }
+    fi
+  done
+}
+
 browse_dir "$HOME"

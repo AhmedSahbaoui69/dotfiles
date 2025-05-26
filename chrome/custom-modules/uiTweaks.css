@@ -15,18 +15,24 @@
 #zen-appcontent-navbar-container {
     display: none !important;
 }
+
 #zen-tabbox-wrapper {
     margin: 0 !important;
 }
-#sidebar-splitter  {
+
+#sidebar-splitter {
     display: none;
 }
 
 /* Configure Inset Border for Sidebar, Web Panel and Browser Stack */
-#main-window:not([sizemode="fullscreen"]) .browserStack browser, #zen-sidebar-web-panel-wrapper, #sidebar-box, .devtools-toolbox-bottom-iframe {
+#main-window:not([sizemode="fullscreen"]) .browserStack browser,
+#zen-sidebar-web-panel-wrapper,
+#sidebar-box,
+.devtools-toolbox-bottom-iframe {
     box-shadow: none !important;
     position: relative;
     border: inset 0.5px var(--zen-colors-border) !important;
+    border-radius: 0px !important
 }
 
 .browserStack browser,
@@ -139,8 +145,13 @@
     padding-right: 15px !important;
 }
 
-#zen-current-workspace-indicator-container {
-  display: none;
+/* Fix weird workspace padding-top bug after 1.12.6b */
+zen-workspace {
+    padding-top: 0 !important;
+}
+
+.zen-current-workspace-indicator {
+    display: none !important;
 }
 
 
@@ -174,6 +185,7 @@
 
 /* Simulate compact mode on window tile */
 @media screen and (max-width: 1000px) {
+
     /* Only apply when #zen-main-app-wrapper does not have zen-compact-mode="true" */
     #zen-main-app-wrapper:not([zen-compact-mode="true"]) #navigator-toolbox {
         overflow: hidden !important;
@@ -181,12 +193,15 @@
         width: 0px !important;
         transition: all 0.3s ease !important;
         opacity: 0 !important;
+        padding: 1 !important;
     }
+
     #zen-main-app-wrapper:not([zen-compact-mode="true"]) #navigator-toolbox:hover {
         min-width: auto !important;
         width: auto !important;
         opacity: 1 !important;
     }
+
     #zen-main-app-wrapper:not([zen-compact-mode="true"]) #zen-sidebar-splitter {
         display: none !important;
     }

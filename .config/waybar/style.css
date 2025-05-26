@@ -2,11 +2,11 @@
   font-family: "JetBrainsMono Nerd Font";
   min-height: 0;
   font-size: 97%;
-  font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
   
   padding: 1px;
   box-shadow: none;
 }
+
 
 @define-color base #1e1e2e;
 @define-color mantle #181825;
@@ -40,7 +40,8 @@
 @define-color rosewater #f5e0dc;
 
 window#waybar {
-  background-color: rgba(137, 180, 250, 0.01);border-radius: 20px;
+  background-color: rgba(137, 180, 250, 0.01);
+  border-radius: 20px;
 }
 
 #tray menu {
@@ -62,7 +63,7 @@ window#waybar {
 .modules-left,
 .modules-center,
 .modules-right {
-  background: rgba(30, 30, 46, 1);
+  background: rgba(17, 17, 27, 0.85);
   border: 2px solid @blue;
   padding-top: 1.5px;
   padding-bottom: 1.5px;
@@ -101,8 +102,8 @@ window#waybar {
 
 #custom-cava {
   color: @red;
-  padding-right: 6px;
-  padding-left: 6px;
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 #battery {

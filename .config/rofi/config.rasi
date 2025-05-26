@@ -1,5 +1,0 @@
-@theme "~/.local/share/rofi/themes/rounded-catpuccin.rasi"
-
-configuration {
-    icon-theme: "Tela-circle-blue-dark";
-}

@@ -1,18 +1,24 @@
-# env.nu
-#
-# Installed by:
-# version = "0.104.1"
-#
-# Previously, environment variables were typically configured in `env.nu`.
-# In general, most configuration can and should be performed in `config.nu`
-# or one of the autoload directories.
-#
-# This file is generated for backwards compatibility for now.
-# It is loaded before config.nu and login.nu
-#
-# See https://www.nushell.sh/book/configuration.html
-#
-# Also see `help config env` for more options.
-#
-# You can remove these comments if you want or leave
-# them for future reference.
+# Environment Variables 
+
+# Man Page Colors
+$env.LESS_TERMCAP_mb = "\e[01;32m"
+$env.LESS_TERMCAP_md = "\e[01;32m"
+$env.LESS_TERMCAP_me = "\e[0m"
+$env.LESS_TERMCAP_se = "\e[0m"
+$env.LESS_TERMCAP_so = "\e[01;47;34m"
+$env.LESS_TERMCAP_ue = "\e[0m"
+$env.LESS_TERMCAP_us = "\e[01;36m"
+$env.LESS = "-R"
+$env.GROFF_NO_SGR = "1"
+
+# Defaults 
+$env.EDITOR = "nvim"
+$env.VISUAL = "nvim"
+$env.TERMINAL = "kitty"
+$env.BROWSER = ".local/share/applications/ZenBrowser.desktop"
+
+# Misc
+$env.CRYPTOGRAPHY_OPENSSL_NO_LEGACY = "true"
+$env.HYPRSHOT_DIR = ($env.HOME | path join "Pictures" "shots")
+$env.OLLAMA_KEEP_ALIVE = "-1"
+$env.UV_HTTP_TIMEOUT = "300"

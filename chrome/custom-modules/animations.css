@@ -1,30 +1,3 @@
-/* URL bar page animation */
-#browser:has(#urlbar[open][zen-floating-urlbar="true"]) #tabbrowser-tabpanels {
-  pointer-events: none;
-  filter: blur(5px) brightness(70%) !important;
-  transition: all 0.2s ease-in-out !important;
-}
-
-#urlbar[open][zen-floating-urlbar="true"] #urlbar-background {
-  border-radius: 1em !important;
-}
-
-#urlbar {
-  transition: none !important;
-}
-
-
-/* Tab switch animation */
-#tabbrowser-tabpanels>hbox:not([zen-split="true"]):not(:has(.zen-glance-background)) {
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.35), filter 0.45s ease-in-out, opacity 0.35s ease-in-out !important;
-  scale: 0.95 !important;
-}
-
-#tabbrowser-tabpanels>hbox.deck-selected:not([zen-split="true"]) {
-  scale: 1 !important;
-}
-
-
 /* Loading tab animation */
 tab[busy] {
   scale: 0.95 !important;
@@ -43,4 +16,108 @@ tab[busy] {
   to {
     transform: translateY(2px);
   }
+}
+
+/* Tab switch animation */
+#tabbrowser-tabpanels
+  > hbox:not([zen-split="true"]):not(:has(.zen-glance-background)) {
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.35), filter 0.45s ease-in-out, opacity 0.35s ease-in-out !important;
+    scale: 0.9 !important;
+  }
+
+  #tabbrowser-tabpanels > hbox.deck-selected:not([zen-split="true"]) {
+    scale: 1 !important;
+  }
+
+/* website switch animations */
+#browser:not(:has(.zen-glance-background)) #tabbrowser-tabpanels {
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.35) !important;
+  }
+
+/* URL bar zoom animation */
+#browser:has(#urlbar[open][zen-floating-urlbar="true"]) #tabbrowser-tabpanels {
+    pointer-events: none;
+    scale: 1.2 !important;
+    filter: blur(10px) brightness(60%) !important;
+  }
+
+#urlbar[open][zen-floating-urlbar="true"] #urlbar-background {
+    border-radius: 1em !important;
+  }
+
+/* trackpad gestures*/
+tabpanels .browserStack browser {
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1) 0.1s !important;
+    border-radius: 0.75em !important;
+  }
+
+/* Previous animation*/
+.browserStack:has(
+    #historySwipeAnimationPreviousArrow:not([style="translate: none;"])
+  )
+  browser {
+    scale: 0.95 !important;
+    transform: translateX(3%) !important;
+    border-radius: 2em !important;
+  }
+
+/* Next animation*/
+.browserStack:has(
+    #historySwipeAnimationNextArrow:not([style="translate: none;"])
+  )
+  browser {
+    scale: 0.95 !important;
+    transform: translateX(-3%) !important;
+    border-radius: 2em !important;
+  }
+
+/* Sidebar Animation */
+#sidebar-box:not([sidebarcommand="viewGenaiChatSidebar"]) {
+    position: absolute !important;
+    z-index: 10;
+    height: 80% !important;
+    top: 10% !important;
+    width: 22em !important;
+    right: 0;
+    left: auto;
+    display: flex !important;
+    opacity: 0;
+    transform: translateX(-2.5%);
+}
+
+/* Show sidebar when hidden is NOT true */
+#sidebar-box:not([sidebarcommand="viewGenaiChatSidebar"]):not([hidden="true"]) {
+    animation: slideInFade 0.3s ease-in-out forwards;
+}
+
+body:has(#sidebar-box:not([sidebarcommand="viewGenaiChatSidebar"]):not([hidden="true"])) #tabbrowser-tabpanels {
+    pointer-events: none;
+    filter: brightness(60%) !important;
+}
+
+/* Hide sidebar when hidden IS true */
+#sidebar-box:not([sidebarcommand="viewGenaiChatSidebar"])[hidden="true"] {
+    animation: slideOutFade 0.3s ease-in-out forwards;
+}
+
+@keyframes slideInFade {
+    from {
+        opacity: 0;
+        transform: translateX(5%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-2.5%);
+    }
+}
+
+@keyframes slideOutFade {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(110%);
+    }
 }

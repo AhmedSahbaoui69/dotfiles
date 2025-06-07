@@ -1,13 +1,13 @@
+/* FONT AND BASE STYLES */
 * {
   font-family: "JetBrainsMono Nerd Font";
-  min-height: 0;
   font-size: 97%;
-  
+  min-height: 0;
   padding: 1px;
   box-shadow: none;
 }
 
-
+/* COLOR DEFINITIONS */
 @define-color base #1e1e2e;
 @define-color mantle #181825;
 @define-color crust #11111b;
@@ -39,39 +39,27 @@
 @define-color flamingo #f2cdcd;
 @define-color rosewater #f5e0dc;
 
+/* WAYBAR WINDOW */
 window#waybar {
   background-color: rgba(137, 180, 250, 0.01);
   border-radius: 20px;
-}
-
-#tray menu {
-  background: rgba(30, 30, 46, 0.8);
-  border: 2px solid @blue;
-  border-radius: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-
-#tray window decoration {
-  background: rgba(30, 30, 46, 0.8);
 }
 
 #waybar.empty #window {
   background: none;
 }
 
+/* MODULE GROUP CONTAINERS */
 .modules-left,
 .modules-center,
 .modules-right {
   background: rgba(17, 17, 27, 0.85);
   border: 2px solid @blue;
-  padding-top: 1.5px;
-  padding-bottom: 1.5px;
-  padding-right: 4px;
-  padding-left: 4px;
   border-radius: 10px;
+  padding: 1.5px 4px;
 }
 
+/* GENERAL MODULE SPACING */
 #backlight,
 #battery,
 #bluetooth,
@@ -79,76 +67,35 @@ window#waybar {
 #cpu,
 #disk,
 #memory,
-#network,
 #pulseaudio,
-#temperature,
+#custom-temp,
 #tray,
 #window,
 #workspaces,
 #custom-power,
 #custom-updater {
-  padding-top: 3px;
-  padding-bottom: 3px;
-  padding-right: 6px;
-  padding-left: 6px;
+  padding: 3px 6px;
 }
 
-
-#bluetooth,
-#backlight {
+/* INDIVIDUAL MODULE COLORS */
+#backlight,
+#bluetooth {
   color: @blue;
-}
-
-
-#custom-cava {
-  color: @red;
-  padding-right: 4px;
-  padding-left: 4px;
 }
 
 #battery {
   color: @green;
 }
 
-@keyframes blink {
-  to {
-    color: @surface0;
-  }
-}
-
 #battery.critical:not(.charging) {
   background-color: rgba(243, 139, 168, 0.2);
   color: @theme_text_color;
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+  animation: blink 0.5s linear infinite alternate;
   border-radius: 10px;
 }
 
 #clock {
   color: @yellow;
-}
-
-#custom-night {
-  color: @yellow;
-  font-size: 13px;
-}
-
-#custom-game-mode {
-  color: @green;
-  font-size: 15px;
-}
-
-#custom-touch-toggle {
-  color: @yellow;
-  transition: all 0.2s ease-in-out;
-}
-
-#custom-touch-toggle:hover,
-#custom-updater {
-  color: @red;
 }
 
 #cpu {
@@ -163,29 +110,78 @@ window#waybar {
   color: @sapphire;
 }
 
-#temperature {
+#custom-temp {
   color: @teal;
 }
 
-#temperature.critical {
-  background-color: @red;
+#custom-cava {
+  color: @red;
+  padding: 0 4px;
 }
 
-#tray>.passive {
-  -gtk-icon-effect: dim;
+#custom-night,
+#custom-rotate-toggle,
+#custom-touch-toggle {
+  color: @yellow;
 }
 
-#tray>.needs-attention {
-  -gtk-icon-effect: highlight;
+#custom-night,
+#custom-waydroid,
+#custom-rotate-toggle {
+  font-size: 13px;
 }
 
+#custom-touch-toggle {
+  transition: all 0.2s ease-in-out;
+}
+
+#custom-touch-toggle:hover,
+#custom-updater {
+  color: @red;
+}
+
+#custom-game-mode {
+  color: @green;
+  font-size: 15px;
+}
+
+#custom-waydroid {
+  color: @green;
+}
+
+#pulseaudio,
+#pulseaudio.bluetooth {
+  color: @sapphire;
+}
+
+#pulseaudio.muted {
+  color: @red;
+}
+
+#network {
+  color: @teal;
+  font-size: 11px;
+}
+
+#network.disconnected,
+#network.disabled {
+  color: @text;
+}
+
+#window {
+  color: @sapphire;
+}
+
+#custom-power {
+  color: @red;
+}
+
+/* WORKSPACES */
 #workspaces button {
   box-shadow: none;
   text-shadow: none;
-  padding: 0px;
+  padding: 0 4px;
   border-radius: 9px;
-  padding-left: 4px;
-  padding-right: 4px;
   animation: gradient_f 20s ease-in infinite;
   transition: all 0.5s cubic-bezier(.55, -0.68, .48, 1.682);
 }
@@ -194,7 +190,6 @@ window#waybar {
   border-radius: 10px;
   color: @overlay0;
   background-color: @surface0;
-  animation: gradient_f 20s ease-in infinite;
   transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
 }
 
@@ -206,9 +201,7 @@ window#waybar {
 #workspaces button.active {
   color: @peach;
   border-radius: 10px;
-  padding-left: 8px;
-  padding-right: 8px;
-  animation: gradient_f 20s ease-in infinite;
+  padding: 0 8px;
   transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
 }
 
@@ -217,31 +210,35 @@ window#waybar {
   border-radius: 0px;
 }
 
-#custom-power {
+/* TRAY */
+#tray menu,
+#tray window decoration {
+  background: rgba(30, 30, 46, 0.8);
+}
+
+#tray menu {
+  border: 2px solid @blue;
+  border-radius: 10px;
+  padding: 5px 0;
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+}
+
+/* ANIMATIONS */
+@keyframes blink {
+  to {
+    color: @surface0;
+  }
+}
+
+/* MPRIS Module Styling */
+#custom-mpris {
   color: @red;
-}
-
-#pulseaudio {
-  color: @sapphire;
-}
-
-#pulseaudio.bluetooth {
-  color: @sapphire;
-}
-
-#pulseaudio.muted {
-  color: @red;
-}
-
-#window {
-  color: @sapphire;
-}
-
-#network {
-  color: @teal;
-}
-
-#network.disconnected,
-#network.disabled {
-  color: @text;
+  margin: 0 4px;
 }

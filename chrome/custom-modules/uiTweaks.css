@@ -1,8 +1,22 @@
+/* Variables Overrides */
+:root {
+    --zen-colors-primary: #82aaff !important;
+    --zen-colors-secondary: #c099ff !important;
+    --zen-colors-tertiary: #1e2030 !important;
+    --zen-colors-border: #3b4261 !important;
+    --zen-dialog-background: #1E1E2E !important;
+    --zen-primary-color: #aac7ff !important;
+    --toolbar-bgcolor: #11111b !important;
+    --zen-main-browser-background-toolbar: #11111b !important;
+    --zen-main-browser-background: #11111b !important;
+    --sidebar-background-color: #1e1e2e !important;
+}
+
+
 /* Disable outside tab frame drop shadow */
 :root:not([inDOMFullscreen="true"]):not([chromehidden~="location"]):not([chromehidden~="toolbar"]) {
     & #tabbrowser-tabbox #tabbrowser-tabpanels .browserSidebarContainer {
         width: -moz-available;
-        border-radius: 0 !important;
         border: 0 !important;
         transform: translate3d(0, 0, 0);
         position: relative;
@@ -10,37 +24,18 @@
     }
 }
 
-
-/* Disable All Frame Margins & Splitter*/
-#zen-appcontent-navbar-container {
-    display: none !important;
-}
-
-#zen-tabbox-wrapper {
-    margin: 0 !important;
-}
-
-#sidebar-splitter {
-    display: none;
-}
-
 /* Configure Inset Border for Sidebar, Web Panel and Browser Stack */
 #main-window:not([sizemode="fullscreen"]) .browserStack browser,
 #zen-sidebar-web-panel-wrapper,
-#sidebar-box,
+#sidebar-box[sidebarcommand="viewGenaiChatSidebar"],
 .devtools-toolbox-bottom-iframe {
     box-shadow: none !important;
     position: relative;
-    border: inset 0.5px var(--zen-colors-border) !important;
-    border-radius: 0px !important
+    border: solid 0.5px var(--zen-colors-border) !important;
 }
-
-.browserStack browser,
-#zen-sidebar-web-panel-wrapper,
-#sidebar-box {
-    border-radius: 0 !important;
+#sidebar-box:not([sidebarcommand="viewGenaiChatSidebar"]) {
+  border: solid 2px var(--zen-colors-border) !important;
 }
-
 
 /* Private Browsing Mode */
 #main-window[privatebrowsingmode="temporary"] {
@@ -70,32 +65,14 @@
     background: var(--zen-colors-tertiary) !important;
 }
 
-
-/* Context Menu Theming */
-:root {
-    --zen-colors-primary: #82aaff !important;
-    --zen-colors-secondary: #c099ff !important;
-    --zen-colors-tertiary: #1e2030 !important;
-    --zen-colors-border: #3b4261 !important;
-    --zen-dialog-background: #1E1E2E !important;
-}
-
 .menupopup-arrowscrollbox {
     background-color: #1E1E2E !important;
 }
 
-
-/* Dim Unloaded Tabs */
-.tabbrowser-tab[pending="true"] {
-    filter: grayscale(1);
-    opacity: 0.5;
-}
-
-
 /* Background Color for Selected Tab with Transition */
 #tabbrowser-tabs {
     & .tabbrowser-tab[selected]:not([zen-essential="true"]) .tab-background {
-        background: rgba(180, 190, 254, 0.4) !important;
+        background: rgba(180, 190, 254, 0.3) !important;
         border: 1px solid rgba(180, 190, 254, 1) !important;
         transition: background 0.3s ease, border 0.3s ease !important;
     }
@@ -107,11 +84,19 @@
     text-align: center !important;
 }
 
-/* URL Bar Text Color */
+/* URL Bar Selected Entry Text Color */
 .urlbarView-row-inner[aria-selected="true"] {
     color: #b4befe !important;
 }
 
+/* Modular Devtools */
+.devtools-toolbox-bottom-iframe {
+  border-radius: 8px !important;
+  margin-top: 8px !important;
+}
+.devtools-horizontal-splitter {
+  display: none !important;
+}
 
 /* Hide Unnecessary URL Bar Buttons */
 #tracking-protection-icon-container,
@@ -119,7 +104,6 @@
 #reader-mode-button {
     display: none !important;
 }
-
 #urlbar:not(:hover):not(:focus-within) #identity-permission-box:not(:hover):not(:focus-within) {
     display: none !important;
 }
@@ -132,28 +116,9 @@
     }
 }
 
-
-/* Zen Essentials Container Force 2 Collumns */
-#zen-essentials-container {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-}
-
-
-/* Fix weird Essentials position after 1.12b update */
-.zen-essentials-container.zen-workspace-tabs-section {
-    position: inherit !important;
-    padding-right: 15px !important;
-}
-
-/* Fix weird workspace padding-top bug after 1.12.6b */
-zen-workspace {
-    padding-top: 0 !important;
-}
-
 .zen-current-workspace-indicator {
-    display: none !important;
+    justify-content: center !important;
 }
-
 
 /* Bigger Zen Essentials Icons */
 #zen-essentials-container>tab>stack:nth-child(1)>hbox:nth-child(2)>stack:nth-child(2)>img:nth-child(3) {
@@ -161,6 +126,10 @@ zen-workspace {
     width: 16px !important;
 }
 
+/* Zen Essentials Container Force 2 Collumns */
+.zen-essentials-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
 
 /* Add New Tab Urlbar Indicator */
 #urlbar[zen-newtab="true"] {
@@ -176,13 +145,6 @@ zen-workspace {
     }
 }
 
-
-/* Fix Tabs Top Margin */
-#zen-tabs-wrapper {
-    margin-top: 3px !important;
-}
-
-
 /* Simulate compact mode on window tile */
 @media screen and (max-width: 1000px) {
 
@@ -193,7 +155,6 @@ zen-workspace {
         width: 0px !important;
         transition: all 0.3s ease !important;
         opacity: 0 !important;
-        padding: 1 !important;
     }
 
     #zen-main-app-wrapper:not([zen-compact-mode="true"]) #navigator-toolbox:hover {
@@ -201,8 +162,16 @@ zen-workspace {
         width: auto !important;
         opacity: 1 !important;
     }
+}
 
-    #zen-main-app-wrapper:not([zen-compact-mode="true"]) #zen-sidebar-splitter {
-        display: none !important;
+#sidebar-splitter {
+  display: none !important;
+}
+
+
+/* Container Tabs Indicator */
+[class^="identity-color"] {
+    .tab-background {
+        border-right: solid var(--identity-tab-color) 3px !important;
     }
 }

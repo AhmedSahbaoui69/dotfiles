@@ -59,14 +59,17 @@
 			"clock"
 		],
 		"modules-right": [
-			"network#speed",
+			"network",
+      "custom/waydroid",
 			"group/motherboard",
 			"custom/night",
 			"custom/touch-toggle",
+      "custom/rotate-toggle",
 			"group/laptop",
 			"custom/game-mode",
 			"custom/separator#blank",
 			"custom/cava",
+			"custom/mpris",
 			"custom/separator#blank",
 			"group/audio",
 			"custom/power"

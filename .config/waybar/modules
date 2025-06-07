@@ -25,7 +25,7 @@
     "modules": [
       "cpu",
       "memory",
-      "temperature"
+      "custom/temp"
     ]
   },
 
@@ -59,8 +59,8 @@
 
   "custom/cava": {
     "exec": "~/.config/hypr/UserScripts/WaybarCava.sh",
-    "on-click": "/home/hmed/Documents/python-projects/gtk-mpris/run.sh",
-    "format": "{}"
+    "format": "{}",
+    "tooltip": false
   },
 
   "battery": {
@@ -154,10 +154,7 @@
     "format": "{}",
     "separate-outputs": true,
     "offscreen-css": true,
-    "offscreen-css-text": "(inactive)",
-    "rewrite": {
-      "(.*) — Zen Browser": "  $1"
-    }
+    "offscreen-css-text": "(inactive)"
   },
 
   "hyprland/language": {
@@ -179,39 +176,12 @@
   },
 
   "network": {
-    "format": "{ifname}",
-    "format-wifi": "{icon}",
-    "format-ethernet": "󰌘",
-    "format-disconnected": "󰌙",
-    "tooltip-format": "{ipaddr}  {bandwidthUpBytes}  {bandwidthDownBytes}",
-    "format-linked": "󰈁 {ifname} (No IP)",
-    "tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
-    "tooltip-format-ethernet": "{ifname} 󰌘",
-    "tooltip-format-disconnected": "󰌙 Disconnected",
-    "format-icons": [
-      "󰤯",
-      "󰤟",
-      "󰤢",
-      "󰤥",
-      "󰤨"
-    ]
-  },
-
-  "network#speed": {
     "interval": 1,
-    "format": "{ifname}",
-    "format-wifi": " {bandwidthUpBytes}  {bandwidthDownBytes}",
-    "format-ethernet": " {bandwidthUpBytes}  {bandwidthDownBytes}",
-    "format-disconnected": "󰌙",
-    "format-icons": [
-      "󰤯",
-      "󰤟",
-      "󰤢",
-      "󰤥",
-      "󰤨"
-    ],
-    "max-length": 20,
-    "min-length": 20
+    "format-wifi": "{bandwidthUpBytes} {bandwidthDownBytes}",
+    "format-ethernet": "{bandwidthUpBytes} {bandwidthDownBytes}",
+    "format-disconnected": "󰌙  Offline...",
+    "max-length": 19,
+    "min-length": 19
   },
 
   "pulseaudio": {
@@ -256,19 +226,13 @@
     "scroll-step": 5
   },
 
-  "temperature": {
+  "custom/temp": {
+    "format": "{}",
+    "return-type": "text",
+    "exec": "~/.config/hypr/UserScripts/AvgTemp.sh",
     "interval": 2,
     "tooltip": true,
-    "hwmon-path": [
-      "/sys/class/hwmon/hwmon5/device/hwmon5/temp1_input"
-    ],
-    "critical-threshold": 80,
-    "format-critical": "{temperatureC}°C {icon}",
-    "format": "{temperatureC}°C {icon}",
-    "format-icons": [
-      "󰈸"
-    ],
-    "on-click-right": "cpupower-gui"
+    "tooltip-format": "Average CPU Temp"
   },
 
   "tray": {
@@ -290,8 +254,8 @@
   },
 
   "custom/power": {
-    "format": "⏻ ",
-    "exec": "echo ; echo 󰟡 power",
+    "format": "⏻  ",
+    "exec": "echo ; echo Power Menu",
     "on-click": "$HOME/.config/hypr/UserScripts/TofiPowerMenu.sh",
     "interval": "once",
     "tooltip": true
@@ -305,6 +269,27 @@
     "signal": 10,
     "tooltip": true,
     "tooltip-format": "Night Mode"
+  },
+
+  "custom/waydroid": {
+    "format": "{}",
+    "return-type": "json",
+    "exec": "$HOME/.config/hypr/UserScripts/WaydroidWaybar.sh",
+    "on-click": "$HOME/.config/hypr/UserScripts/WaydroidWaybar.sh toggle && pkill -SIGRTMIN+20 waybar",
+    "signal": 20,
+    "tooltip": true,
+    "tooltip-format": "Waydroid Container",
+    "interval": 5
+  },
+
+  "custom/rotate-toggle": {
+      "format": "{}",
+      "return-type": "json",
+      "exec": "$HOME/.config/hypr/UserScripts/AutoRotate.sh",
+      "on-click": "$HOME/.config/hypr/UserScripts/AutoRotate.sh toggle && pkill -SIGRTMIN+13 waybar",
+      "signal": 13,
+      "tooltip": true,
+      "tooltip-format": "Auto Rotate"
   },
 
   "custom/touch-toggle": {
@@ -331,25 +316,17 @@
     "format": " {}",
     "exec": "checkupdates | wc -l",
     "exec-if": "[[ $(checkupdates | wc -l) ]]",
-    "interval": 15,
+    "interval": "once",
     "on-click": "kitty -T update yay -Syu && notify-send 'The system has been updated'"
   },
 
-  "custom/separator#dot": {
-    "format": "",
-    "interval": "once",
-    "tooltip": false
-  },
-
-  "custom/separator#dot-line": {
-    "format": "",
-    "interval": "once",
-    "tooltip": false
-  },
-
-  "custom/separator#line": {
-    "format": "|",
-    "interval": "once",
-    "tooltip": false
+  "custom/mpris": {
+    "format": "{}",
+    "exec": "/home/hmed/dotfiles/.config/hypr/UserScripts/WaybarMpris.sh",
+    "return-type": "json",
+    "on-click": "/home/hmed/dotfiles/.config/hypr/UserScripts/WaybarMpris.sh play-toggle",
+    "on-click-right": "/home/hmed/dotfiles/.config/hypr/UserScripts/WaybarMpris.sh switch-player",
+    "signal": 8,
+    "interval": 2
   }
 }

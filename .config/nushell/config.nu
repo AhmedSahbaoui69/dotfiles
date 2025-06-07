@@ -15,3 +15,11 @@ $env.config.history = {
   isolation: true
 }
 
+let carapace_completer = {|spans|
+    carapace $spans.0 nushell ...$spans | from json
+}
+
+$env.config.completions.external = {
+  enable: true
+  completer: $carapace_completer
+}

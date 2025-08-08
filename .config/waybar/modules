@@ -1,16 +1,15 @@
 {
   "hyprland/workspaces#pacman": {
     "disable-scroll": true,
-    "active-only": false,
-    "all-outputs": true,
+    "persistent-only": true,
+    "all-outputs": false,
     "on-click": "activate",
     "show-special": false,
     "persistent-workspaces": {
-      "1": [],
-      "2": [],
-      "3": [],
-      "4": [],
-      "5": []
+      "eDP-1": [1,2,3,4,5],
+      "HDMI-A-1": [6,7,8,9,10],
+      "DP-3": [6,7,8,9,10],
+      "DP-4": [6,7,8,9,10]
     },
     "format": "{icon}",
     "format-icons": {
@@ -132,8 +131,8 @@
   },
 
   "hyprland/window": {
-    "max-length": 60,
-    "min-length": 60,
+    "max-length": 65,
+    "min-length": 65,
     "format": "{}",
     "separate-outputs": true,
     "offscreen-css": true,
@@ -149,13 +148,14 @@
 
   "network": {
     "interval": 1,
+    "format": "   {bandwidthUpBytes}    {bandwidthDownBytes}",
     "format-wifi": "   {bandwidthUpBytes}    {bandwidthDownBytes}",
     "format-ethernet": "   {bandwidthUpBytes}    {bandwidthDownBytes}",
     "format-disconnected": "󰌙  Offline..."
   },
 
   "pulseaudio": {
-    "format": "{icon}   {volume}%",
+    "format": "{icon}  {volume}%",
     "format-bluetooth": "{icon} 󰂰 {volume}%",
     "format-muted": "󰖁",
     "format-icons": {
@@ -168,8 +168,8 @@
       "default": [
         "",
         "",
-        "󰕾",
-        ""
+        "",
+        "  "
       ],
       "ignored-sinks": [
         "Easy Effects Sink"
@@ -180,7 +180,7 @@
     "on-click-right": "kitty --class pulsemixer -e pulsemixer",
     "on-scroll-up": "~/.config/hypr/UserScripts/Volume.sh --inc",
     "on-scroll-down": "~/.config/hypr/UserScripts/Volume.sh --dec",
-    "tooltip-format": "{icon} {desc} | {volume}%",
+    "tooltip-format": "{desc}",
     "smooth-scrolling-threshold": 1
   },
 
@@ -192,7 +192,7 @@
     "on-click-right": "kitty --class pulsemixer -e pulsemixer",
     "on-scroll-up": "~/.config/hypr/UserScripts/Volume.sh --mic-inc",
     "on-scroll-down": "~/.config/hypr/UserScripts/Volume.sh --mic-dec",
-    "tooltip-format": "{source_desc} | {source_volume}%",
+    "tooltip-format": "{source_desc}",
     "scroll-step": 5
   },
 

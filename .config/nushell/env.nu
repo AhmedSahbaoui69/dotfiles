@@ -22,3 +22,8 @@ $env.CRYPTOGRAPHY_OPENSSL_NO_LEGACY = "true"
 $env.HYPRSHOT_DIR = ($env.HOME | path join "Pictures" "shots")
 $env.OLLAMA_KEEP_ALIVE = "-1"
 $env.UV_HTTP_TIMEOUT = "300"
+
+# Flutter Path
+$env.PATH = ($env.PATH | append '~/Documents/FlutterProjects/flutter-sdk/bin')
+$env.ANDROID_HOME = "/opt/android-sdk"
+$env.JAVA_HOME = "/usr/lib/jvm/java-17-openjdk"

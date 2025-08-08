@@ -1,8 +1,9 @@
 # Aliases
 
 alias pls = sudo
-alias yeet = yay -Rns
 alias adios = shutdown -h now
+alias h = do { open ~/.config/nushell/history.txt | lines | uniq | to text | fzf | wl-copy }
+
 def cat [...args] { bat ...$args}
 def ip [...args] { ^ip --color=auto ...$args }
 def doxme [] { wget http://ipinfo.io/ip -qO - }
@@ -20,7 +21,7 @@ def ocr [
         $tmpimg
     } else if $path_or_url == null {
         # Get latest file from screenshots folder
-        ls ~/Pictures/shots/ | where type == "file" | sort-by modified | last | get name
+        ls ~/Media/shots/ | where type == "file" | sort-by modified | last | get name
     } else if $path_or_url =~ '^https?://' {
         http get $path_or_url | save -f $tmpimg
         $tmpimg

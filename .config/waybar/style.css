@@ -74,9 +74,12 @@ window#waybar {
 #window,
 #workspaces,
 #custom-power,
-#custom-updater,
+#custom-updater {
+  padding: 3px 5px;
+}
+
 #network {
-  padding: 3px 6px;
+  padding: 3px 2px;
 }
 
 /* INDIVIDUAL MODULE COLORS */
@@ -140,6 +143,7 @@ window#waybar {
   font-size: 15px;
   padding-left: 0px;
   margin-left: 0px;
+  margin-left: 0px;
 }
 
 #custom-waydroid {
@@ -159,11 +163,6 @@ window#waybar {
 
 #network {
   color: @teal;
-}
-
-#network.disconnected,
-#network.disabled {
-  color: @text;
 }
 
 #window {

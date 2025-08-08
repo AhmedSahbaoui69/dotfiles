@@ -1,7 +1,7 @@
 /* FONT AND BASE STYLES */
 * {
   font-family: "JetBrainsMono Nerd Font";
-  font-size: 97%;
+  font-size: 98%;
   min-height: 0;
   padding: 1px;
   box-shadow: none;
@@ -41,8 +41,8 @@
 
 /* WAYBAR WINDOW */
 window#waybar {
-  background-color: rgba(137, 180, 250, 0.01);
-  border-radius: 20px;
+  background-color: rgba(17, 17, 27, 0.7);
+  margin: 0;
 }
 
 #waybar.empty #window {
@@ -53,10 +53,11 @@ window#waybar {
 .modules-left,
 .modules-center,
 .modules-right {
-  background: rgba(17, 17, 27, 0.85);
-  border: 2px solid @blue;
+  background: none;
+  border: none;
   border-radius: 10px;
-  padding: 1.5px 4px;
+  padding: 2px 4px;
+  margin: 0;
 }
 
 /* GENERAL MODULE SPACING */
@@ -64,7 +65,7 @@ window#waybar {
 #battery,
 #bluetooth,
 #clock,
-#cpu,
+#custom-polycat,
 #disk,
 #memory,
 #pulseaudio,
@@ -73,7 +74,8 @@ window#waybar {
 #window,
 #workspaces,
 #custom-power,
-#custom-updater {
+#custom-updater,
+#network {
   padding: 3px 6px;
 }
 
@@ -88,8 +90,7 @@ window#waybar {
 }
 
 #battery.critical:not(.charging) {
-  background-color: rgba(243, 139, 168, 0.2);
-  color: @theme_text_color;
+  color: @red;
   animation: blink 0.5s linear infinite alternate;
   border-radius: 10px;
 }
@@ -98,12 +99,12 @@ window#waybar {
   color: @yellow;
 }
 
-#cpu {
-  color: @green;
+#custom-polycat {
+  color: @blue;
 }
 
 #memory {
-  color: @sky;
+  color: @green;
 }
 
 #disk {
@@ -111,7 +112,7 @@ window#waybar {
 }
 
 #custom-temp {
-  color: @teal;
+  color: @peach;
 }
 
 #custom-cava {
@@ -123,12 +124,6 @@ window#waybar {
 #custom-rotate-toggle,
 #custom-touch-toggle {
   color: @yellow;
-}
-
-#custom-night,
-#custom-waydroid,
-#custom-rotate-toggle {
-  font-size: 13px;
 }
 
 #custom-touch-toggle {
@@ -143,10 +138,14 @@ window#waybar {
 #custom-game-mode {
   color: @green;
   font-size: 15px;
+  padding-left: 0px;
+  margin-left: 0px;
 }
 
 #custom-waydroid {
   color: @green;
+  margin-left: 6px;
+  margin-right: 0px;
 }
 
 #pulseaudio,
@@ -160,7 +159,6 @@ window#waybar {
 
 #network {
   color: @teal;
-  font-size: 11px;
 }
 
 #network.disconnected,
@@ -210,16 +208,24 @@ window#waybar {
   border-radius: 0px;
 }
 
-/* TRAY */
+tooltip {
+  background-color: rgba(30, 30, 46, 0.95);
+}
+
+tooltip label {
+  padding: 4px;
+  background-color: transparent;
+}
+
 #tray menu,
 #tray window decoration {
-  background: rgba(30, 30, 46, 0.8);
+  background-color: rgba(30, 30, 46, 0.8);
 }
 
 #tray menu {
-  border: 2px solid @blue;
-  border-radius: 10px;
-  padding: 5px 0;
+  border: 1px solid @surface1;
+  border-radius: 5px;
+  padding: 6px 0;
 }
 
 #tray > .passive {

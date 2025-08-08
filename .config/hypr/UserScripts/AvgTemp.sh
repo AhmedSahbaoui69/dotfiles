@@ -14,4 +14,4 @@ sensors -j
     | each {|k| $v | get $k }
 }
 | flatten | math avg | into int
-| into string | echo $"($in)°C 󰈸"
+| into string | echo $" ($in)°C"

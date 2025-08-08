@@ -1,10 +1,10 @@
 default-timeout=4000
-background-color=#1e1e2e
-progress-color=#313244
+background-color=#11111bb3
+progress-color=#82aaff33
 border-radius=10
-padding=4
-border-color=#74c7ec
-max-icon-size=25
-anchor=top-center
-font=JetBrainsMono Nerd Font 10
+padding=20
+border-size=0
+max-icon-size=30
+anchor=top-right
+font=JetBrainsMono Nerd Font 11
 layer=overlay

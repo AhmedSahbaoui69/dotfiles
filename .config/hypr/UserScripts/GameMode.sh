@@ -6,8 +6,12 @@ CONFIG_FILE="$HOME/.config/hypr/UserConfigs/UserSettings.conf"
 ICON_GAME_ON="󰓅 "  # Game Mode ON
 ICON_GAME_OFF="󰌪 " # Game Mode OFF
 
-# Check if Game Mode (Performance) is enabled
-current_profile=$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor)
+# Get current CPU governor
+get_current_governor() {
+  cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+}
+
+current_profile=$(get_current_governor)
 
 if [[ "$current_profile" == "performance" ]]; then
   ICON="$ICON_GAME_ON"
@@ -29,22 +33,33 @@ toggle_setting() {
   fi
 }
 
-# If clicked toggle game mode
+# Handle toggle
 if [[ $1 == "toggle" ]]; then
-  toggle_setting "blur" "enabled"
-  toggle_setting "animations" "enabled"
-
-  current_profile=$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor)
   if [[ "$current_profile" != "performance" ]]; then
-    pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY cpupower frequency-set -g performance >/dev/null
-    notify-send "Game Mode Activated"
-    ICON="$ICON_GAME_ON"
+    if pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY cpupower frequency-set -g performance >/dev/null 2>&1; then
+      notify-send "Power Profile" "Performance Mode ON"
+      toggle_setting "blur" "enabled"
+      toggle_setting "animations" "enabled"
+      ICON="$ICON_GAME_ON"
+    else
+      notify-send "Failed to activate Game Mode"
+      exit 1
+    fi
   else
-    pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY cpupower frequency-set -g powersave >/dev/null
-    notify-send "Game Mode Deactivated"
-    ICON="$ICON_GAME_OFF"
+    if pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY cpupower frequency-set -g powersave >/dev/null 2>&1; then
+      notify-send "Power Profile" "Power Save Mode ON"
+      toggle_setting "blur" "enabled"
+      toggle_setting "animations" "enabled"
+      ICON="$ICON_GAME_OFF"
+    else
+      notify-send "Failed to deactivate Game Mode"
+      exit 1
+    fi
   fi
 fi
 
+# Final governor state for tooltip
+current_profile=$(get_current_governor)
+
 # Output JSON for Waybar
-printf '{"text":"%s"}\n' "$ICON"
+printf '{"text":"%s","tooltip":"%s"}\n' "$ICON" "$current_profile"

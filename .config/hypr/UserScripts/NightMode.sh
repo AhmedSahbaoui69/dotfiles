@@ -14,11 +14,11 @@ fi
 if [[ $1 == "toggle" ]]; then
   if [[ $ICON == "$ICON_ON" ]]; then
     pkill -x wlsunset
-    notify-send "👁 Night Mode Switched OFF"
+    notify-send "   Night Mode Switched OFF"
     ICON="$ICON_OFF"
   else
     wlsunset -T 4200 &
-    notify-send "👁 Night Mode Switched ON"
+    notify-send "󰛐   Night Mode Switched ON"
     ICON="$ICON_ON"
   fi
 fi

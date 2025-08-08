@@ -4,6 +4,14 @@ source ~/.oh-my-posh.nu
 source ~/.config/nushell/env.nu
 source ~/.config/nushell/aliases.nu
 
+^ssh-agent -c
+    | lines
+    | first 2
+    | parse "setenv {name} {value};"
+    | transpose -r
+    | into record
+    | load-env
+
 hyprctl splash | cowsay
 
 # Nushell Configuration

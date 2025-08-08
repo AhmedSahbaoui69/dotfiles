@@ -14,11 +14,11 @@ fi
 if [[ $1 == "toggle" ]]; then
   if [[ $ICON == "$ICON_ON" ]]; then
     pkill -x iio-hyprland
-    notify-send "Auto Rotate OFF"
+    notify-send "󰌢   Auto Rotate OFF"
     ICON="$ICON_OFF"
   else
     iio-hyprland &
-    notify-send "Auto Rotate ON"
+    notify-send "󰢅   Auto Rotate ON"
     ICON="$ICON_ON"
   fi
 fi

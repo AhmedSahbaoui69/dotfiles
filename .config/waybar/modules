@@ -284,7 +284,7 @@
     "format": " {}",
     "exec": "checkupdates | wc -l",
     "exec-if": "[[ $(checkupdates | wc -l) ]]",
-    "interval": "once",
+    "interval": 3600,
     "on-click": "kitty -T update yay -Syu && notify-send 'The system has been updated'"
   }
 }

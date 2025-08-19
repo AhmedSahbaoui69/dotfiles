@@ -1,6 +1,6 @@
 # Main Nushell configuration
 
-source ~/.oh-my-posh.nu
+source ~/.config/nushell/.oh-my-posh.nu
 source ~/.config/nushell/env.nu
 source ~/.config/nushell/aliases.nu
 

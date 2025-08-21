@@ -20,7 +20,7 @@ yay -Syu awesome-terminal-fonts cantarell-fonts noto-fonts noto-fonts-cjk noto-f
 ## Install Necessary Packages
 
 ```bash
-yay -Syu nushell mako tofi waylock waybar swww wayneko-git kdeconnect neovim nautilus pulsemixer btop network-manager-applet blueman polycat nwg-look qt5ct qt6ct kvantum fish carapace hyprshot cava gsimplecal fastfetch cpupower lm_sensors visual-studio-code-bin firefox zsync flatpak uv docker hyprpicker gromit-mpx cliphist qbittorrent qpwgraph lazygit nwg-dock-hyprland wvkbd
+yay -Syu nushell mako tofi waylock waybar swww wayneko-git kdeconnect neovim nautilus pulsemixer btop network-manager-applet blueman polycat nwg-look qt5ct qt6ct kvantum fish carapace hyprshot cava gsimplecal fastfetch cpupower lm_sensors visual-studio-code-bin firefox zsync flatpak uv docker hyprpicker gromit-mpx cliphist qbittorrent qpwgraph lazygit nwg-dock-hyprland wvkbd iio-hyprland wlsunset
 ```
 
 ## Install Zen Browser

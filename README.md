@@ -20,7 +20,7 @@ yay -Syu awesome-terminal-fonts cantarell-fonts noto-fonts noto-fonts-cjk noto-f
 ## Install Necessary Packages
 
 ```bash
-yay -Syu nushell mako tofi waylock waybar swww wayneko-git kdeconnect neovim nautilus pulsemixer btop network-manager-applet blueman polycat nwg-look qt5ct qt6ct kvantum fish carapace hyprshot cava gsimplecal fastfetch cpupower lm_sensors visual-studio-code-bin firefox zsync flatpak uv docker hyprpicker gromit-mpx cliphist qbittorrent
+yay -Syu nushell mako tofi waylock waybar swww wayneko-git kdeconnect neovim nautilus pulsemixer btop network-manager-applet blueman polycat nwg-look qt5ct qt6ct kvantum fish carapace hyprshot cava gsimplecal fastfetch cpupower lm_sensors visual-studio-code-bin firefox zsync flatpak uv docker hyprpicker gromit-mpx cliphist qbittorrent qpwgraph lazygit
 ```
 
 ## Install Zen Browser
@@ -34,7 +34,7 @@ bash <(curl https://updates.zen-browser.app/appimage.sh)
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 ```
 ```bash
-flatpak install com.usebottles.bottles org.onlyoffice.desktopeditors io.github.Soundux
+flatpak install com.usebottles.bottles org.onlyoffice.desktopeditors io.github.Soundux com.stremio.Stremio
 ```
 
 ## Create symbolic links of `.config`

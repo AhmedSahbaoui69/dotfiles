@@ -108,6 +108,62 @@
     display: none !important;
 }
 
+/* Better Find Bar */
+findbar {
+    display: flex !important;
+    border-radius: var(--zen-border-radius, 8px) !important;
+    margin: 0 !important;
+    width: 90% !important;
+    max-width: 600px !important;
+    height: auto !important;
+
+    position: absolute !important;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    overflow: unset !important;
+    box-shadow: var(--box-shadow-10);
+    background: var(--zen-colors-tertiary, #2c2c2c) !important;
+    border: 1px solid var(--zen-colors-border, #444) !important;
+
+    transition: transform 0.35s ease !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+findbar .findbar-container {
+    flex-wrap: wrap;
+    overflow-x: auto !important;
+    height: auto !important;
+    row-gap: 10px;
+}
+findbar .findbar-container > :first-child {
+    width: 100% !important;
+}
+findbar .findbar-textbox {
+    flex-grow: 1;
+}
+findbar .findbar-match-diacritics {
+    display: none !important;
+}
+findbar,
+findbar .findbar-textbox:not([status="notfound"]) {
+    backdrop-filter: blur(8px);
+    background: color-mix(
+      in hsl,
+      var(--zen-colors-tertiary),
+      transparent 10%
+    ) !important;
+}
+findbar[hidden="true"] {
+    transform: translateX(-50%) translateY(150px);
+}
+@starting-style {
+    findbar {
+        transform: translateX(-50%) translateY(150px);
+    }
+}
+
 
 /* Change Media Player Background Color */
 #zen-media-controls-toolbar {

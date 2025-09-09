@@ -7,9 +7,8 @@
     "show-special": false,
     "persistent-workspaces": {
       "eDP-1": [1,2,3,4,5],
-      "HDMI-A-1": [6,7,8,9,10],
-      "DP-3": [6,7,8,9,10],
-      "DP-4": [6,7,8,9,10]
+      "DP-3": [11,12,13,14,15],
+      "DP-4": [11,12,13,14,15]
     },
     "format": "{icon}",
     "format-icons": {

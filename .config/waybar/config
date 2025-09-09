@@ -8,7 +8,7 @@
 		"position": "top",
 		"spacing": 6,
 		"fixed-center": true,
-		"output": ["DP-3", "DP-4"],
+		"output": ["HDMI-A-1", "DP-3", "DP-4"],
 		"margin-top": 0,
 		"margin-bottom": 0,
 		"margin-left": 0,
@@ -25,7 +25,7 @@
 		],
 		"modules-right": [
 			"network",
-      "custom/waydroid",
+      		"custom/waydroid",
 			"group/motherboard",
 			"custom/night",
 			"group/laptop",
@@ -33,7 +33,7 @@
 			"custom/separator#blank",
 			"custom/cava",
 			"custom/separator#blank",
-      "group/audio",
+			"group/audio",
 			"custom/power"
 		]
 	},
@@ -63,11 +63,9 @@
 		],
 		"modules-right": [
 			"network",
-      "custom/waydroid",
+      		"custom/waydroid",
 			"group/motherboard",
 			"custom/night",
-			"custom/touch-toggle",
-      "custom/rotate-toggle",
 			"group/laptop",
 			"custom/game-mode",
 			"custom/separator#blank",

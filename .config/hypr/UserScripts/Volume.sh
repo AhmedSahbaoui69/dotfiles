@@ -16,10 +16,12 @@ get_icon() {
   current=$(get_volume)
   if [[ "$current" == "Muted" ]]; then
     echo "  "
+  elif [[ "${current%\%}" -le 25 ]]; then
+    echo "  "
   elif [[ "${current%\%}" -le 60 ]]; then
-    echo "  "
+    echo " "
   else
-    echo "  "
+    echo " "
   fi
 }
 

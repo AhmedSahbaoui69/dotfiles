@@ -32,11 +32,13 @@ fi
 # If toggle, start or stop waydroid session
 if [[ $1 == "toggle" ]]; then
   if [[ "$STATUS" == "RUNNING" ]]; then
-    systemctl stop waydroid-container.service
+    waydroid session stop
     notify-send "   Waydroid Session stopped"
+    ICON="$ICON_STOPPED"
   else
     notify-send "   Waydroid Session started"
-    waydroid session start
+    nohup waydroid session start >/dev/null 2>&1 &
+    ICON="$ICON_RUNNING"
   fi
 fi
 

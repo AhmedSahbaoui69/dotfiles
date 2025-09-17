@@ -8,6 +8,7 @@
     "persistent-workspaces": {
       "eDP-1": [1,2,3,4,5],
       "DP-3": [11,12,13,14,15],
+      "HDMI-A-1": [11,12,13,14,15],
       "DP-4": [11,12,13,14,15]
     },
     "format": "{icon}",
@@ -66,7 +67,7 @@
 
   "custom/polycat": {
     "format": "{}",
-    "exec": "/usr/local/bin/polycat --config-path ~/.config/polycat/polycat-config --stat-path /proc/stat",
+    "exec": "/usr/bin/polycat --config-path ~/.config/polycat/polycat-config --stat-path /proc/stat",
     "on-click": "kitty -e btop"
   },
 
@@ -277,15 +278,16 @@
     "format": "{}",
     "return-type": "json",
     "exec": "$HOME/.config/hypr/UserScripts/GameMode.sh",
+    "on-click": "~/.config/hypr/UserScripts/GameMode.sh toggle",
     "signal": 12
   },
 
   "custom/updater": {
     "format": " {}",
-    "exec": "dnf check-update --quiet | grep -E '^[a-zA-Z0-9]' | wc -l",
+    "exec": "if command -v yay &>/dev/null; then yay -Qu | wc -l; elif command -v dnf &>/dev/null; then dnf check-update --quiet | grep -E '^[a-zA-Z0-9]' | wc -l; else echo 0; fi",
     "tooltip": true,
-    "exec-tooltip": "dnf check-update --quiet | grep -E '^[a-zA-Z0-9]'",
+    "exec-tooltip": "if command -v yay &>/dev/null; then yay -Qu; elif command -v dnf &>/dev/null; then dnf check-update --quiet | grep -E '^[a-zA-Z0-9]'; else echo 'No updater found'; fi",
     "interval": 900,
-    "on-click": "kitty -T update sudo dnf upgrade -y && notify-send 'Fedora has been updated'"
-  }
+    "on-click": "if command -v yay &>/dev/null; then kitty -T update yay -Syu --noconfirm && notify-send 'Arch has been updated'; elif command -v dnf &>/dev/null; then kitty -T update sudo dnf upgrade -y && notify-send 'Fedora has been updated'; fi"
+}
 }

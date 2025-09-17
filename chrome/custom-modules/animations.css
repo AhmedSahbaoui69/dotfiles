@@ -37,7 +37,7 @@ tab[busy] {
 /* URL bar zoom animation */
 #browser:has(#urlbar[open][zen-floating-urlbar="true"]) #tabbrowser-tabpanels {
     pointer-events: none;
-    filter: blur(10px) brightness(60%) !important;
+    filter: brightness(60%) !important;
   }
 
 #urlbar[open][zen-floating-urlbar="true"] #urlbar-background {

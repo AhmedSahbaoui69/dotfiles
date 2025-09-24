@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Office 365
-Comment=Open selected file in OneDrive web
-Exec=/usr/bin/python3 /home/hmed/Documents/open_in_office/src/main.py %f
-Icon=folder-remote
-Terminal=false
-Type=Application
-MimeType=application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;application/vnd.ms-excel;application/vnd.openxmlformats-officedocument.wordprocessingml.document;application/msword;application/pdf;
-NoDisplay=false

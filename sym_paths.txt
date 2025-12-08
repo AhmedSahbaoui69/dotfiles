@@ -22,7 +22,8 @@
 .local/share/applications/libreoffice-writer.desktop
 .local/share/applications/office365.desktop
 .icons/Bibata-Modern-Classic
-.icons/Tela-dark
+.icons/Tela-circle-blue
+.icons/Tela-circle-blue-dark
 .themes/adw-calc
 .themes/adw-impress
 .themes/adw-writer

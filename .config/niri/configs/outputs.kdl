@@ -1,0 +1,25 @@
+//   ___        _               _       
+//  / _ \ _   _| |_ _ __  _   _| |_ ___ 
+// | | | | | | | __| '_ \| | | | __/ __|
+// | |_| | |_| | |_| |_) | |_| | |_\__ \
+//  \___/ \__,_|\__| .__/ \__,_|\__|___/
+//                 |_|                  
+
+output "eDP-1" {
+    mode "1920x1080@60.00"
+    scale 1
+    transform "normal"
+    position x=0 y=0
+    focus-at-startup
+    hot-corners {
+        top-left
+    }
+}
+
+output "HDMI-A-1" {
+    mode custom=true "1920x1200@60.00"
+    scale 1
+    hot-corners {
+        off
+    }
+}

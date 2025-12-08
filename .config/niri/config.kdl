@@ -1,0 +1,31 @@
+include "./configs/general.kdl"
+include "./configs/env.kdl"
+include "./configs/startup.kdl"
+include "./configs/outputs.kdl"
+include "./configs/window_rules.kdl"
+include "./configs/keybinds.kdl"
+
+// For some reason, the include statements the "layout" has to be explicitly in the config.kdl file
+layout {
+    gaps 10
+    center-focused-column "never"
+    preset-column-widths {
+        proportion 0.3
+        proportion 0.5
+        proportion 0.7
+    }
+    default-column-width { proportion 0.5; }
+    
+    focus-ring {
+        off
+    }
+    border {
+        width 3
+        active-gradient from="#89B4FA" to="#A6E3A1" angle=45
+        inactive-color "#59595A"
+        urgent-color "#9b0000"
+    }
+    shadow {
+      off
+    }
+}

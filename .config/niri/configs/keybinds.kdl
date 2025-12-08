@@ -1,0 +1,121 @@
+//  _  __          _     _           _     
+// | |/ /___ _   _| |__ (_)_ __   __| |___ 
+// | ' // _ \ | | | '_ \| | '_ \ / _` / __|
+// | . \  __/ |_| | |_) | | | | | (_| \__ \
+// |_|\_\___|\__, |_.__/|_|_| |_|\__,_|___/
+//           |___/                         
+
+binds {
+    // Essensial Apps
+    Mod+D                 { spawn "bash" "/home/hmed/.config/niri/scripts/tofi.sh"; }   // App Menu
+    Mod+T                 { spawn "kitty"; }                                            // Terminal
+    Mod+B                 { spawn "chromium"; }                                         // Browser
+    Mod+F                 { spawn "nautilus"; }                                         // File Manager
+    Mod+E                 { spawn "kitty" "-e" "nvim"; }                                // Neovim
+
+
+    // Misc
+    Mod+L                 { spawn "swaylock" "-C" "~/.config/swaylock/config.conf"; }   // Lock Screen
+    Mod+Z                 { spawn "wayscriber" "-a" "--no-tray"; }                      // Wayscriber
+    Mod+Alt+R             { spawn "~/.config/niri/scripts/Refresh.sh"; }                // Refresh
+    Mod+Alt+V             { spawn "~/.config/niri/scripts/ClipManager.sh"; }            // Clipboard Manager
+
+
+    // XF86 Binds
+    XF86AudioRaiseVolume  allow-when-locked=true { spawn-sh "~/.config/niri/scripts/Volume.sh --inc"; }
+    XF86AudioLowerVolume  allow-when-locked=true { spawn-sh "~/.config/niri/scripts/Volume.sh --dec"; }
+    XF86AudioMute         allow-when-locked=true { spawn-sh "~/.config/niri/scripts/Volume.sh --toggle"; }
+    XF86AudioMicMute      allow-when-locked=true { spawn-sh "~/.config/niri/scripts/Volume.sh --toggle-mic"; }
+    XF86AudioPlay         allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+    XF86AudioStop         allow-when-locked=true { spawn-sh "playerctl stop"; }
+    XF86AudioPrev         allow-when-locked=true { spawn-sh "playerctl previous"; }
+    XF86AudioNext         allow-when-locked=true { spawn-sh "playerctl next"; }
+    XF86MonBrightnessUp   allow-when-locked=true { spawn-sh  "~/.config/niri/scripts/Brightness.sh --inc"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn-sh "~/.config/niri/scripts/Brightness.sh --dec"; }
+    
+    // Overview
+    Mod+O repeat=false    { toggle-overview; }
+
+    // Move
+    Mod+Shift+F           { toggle-window-floating; }                                   // Toggle Floating
+    Mod+S                 { fullscreen-window; }                                        // Fullscreen   
+    Ctrl+M                { toggle-windowed-fullscreen; }                               // Windowed Fullscreen  
+    Mod+Q repeat=false    { close-window; }                                             // Close Window
+    Mod+Ctrl+Left         { move-column-left; }                                         // Move Column Left
+    Mod+Ctrl+Down         { move-window-down; }                                         // Move Window Down
+    Mod+Ctrl+Up           { move-window-up; }                                           // Move Window Up  
+    Mod+Ctrl+Right        { move-column-right; }                                        // Move Column Right    
+    Mod+BracketLeft       { consume-or-expel-window-left; }                             // Consume/Expel Left
+    Mod+BracketRight      { consume-or-expel-window-right; }                            // Consume/Expel Right
+    
+    // Resize
+    Mod+R                 { switch-preset-column-width; }                               // Cycle Through Width Presets
+    Mod+M                 { expand-column-to-available-width; }                         // Expand Window To Available Width
+
+    // Focus   
+    Mod+Left              { focus-column-left; }
+    Mod+Down              { focus-window-down; }
+    Mod+Up                { focus-window-up; }
+    Mod+Right             { focus-column-right; }
+    Mod+WheelScrollDown   { focus-column-right;}
+    Mod+WheelScrollUp     { focus-column-left; }
+    Mod+C                 { center-column; }
+    Mod+Ctrl+R            { reset-window-height; }
+
+    // Consume one window from the right to the bottom of the focused column.
+    Mod+Comma  { consume-window-into-column; }
+    // Expel the bottom window from the focused column to the right.
+    Mod+Period { expel-window-from-column; }
+
+    // Mod+R { switch-preset-column-width-back; }
+    Mod+Shift+R { switch-preset-window-height; }
+
+
+
+    // Center all fully visible columns on screen.
+    Mod+Ctrl+C { center-visible-columns; }
+
+    Mod+Shift+Left { set-column-width "-10%"; }
+    Mod+Shift+Right { set-column-width "+10%"; }
+
+    // Finer height adjustments when in column with other windows.
+    Mod+Shift+Down { set-window-height "-10%"; }
+    Mod+Shift+Up { set-window-height "+10%"; }
+
+    // Move the focused window between the floating and the tiling layout.
+    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+
+    // Toggle tabbed column display mode.
+    // Windows in this column will appear as vertical tabs,
+    // rather than stacked on top of each other.
+    Mod+W { toggle-column-tabbed-display; }
+
+    // Actions to switch layouts.
+    // Note: if you uncomment these, make sure you do NOT have
+    // a matching layout switch hotkey configured in xkb options above.
+    // Having both at once on the same hotkey will break the switching,
+    // since it will switch twice upon pressing the hotkey (once by xkb, once by niri).
+    // Mod+Space       { switch-layout "next"; }
+    // Mod+Shift+Space { switch-layout "prev"; }
+
+    Print { screenshot; }
+    Ctrl+Print { screenshot-screen; }
+    Alt+Print { screenshot-window; }
+
+    // Applications such as remote-desktop clients and software KVM switches may
+    // request that niri stops processing the keyboard shortcuts defined here
+    // so they may, for example, forward the key presses as-is to a remote machine.
+    // It's a good idea to bind an escape hatch to toggle the inhibitor,
+    // so a buggy application can't hold your session hostage.
+    //
+    // The allow-inhibiting=false property can be applied to other binds as well,
+    // which ensures niri always processes them, even when an inhibitor is active.
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+
+    // The quit action will show a confirmation dialog to avoid accidental exits.
+    Mod+Shift+E { quit; }
+
+    // Powers off the monitors. To turn them back on, do any input like
+    // moving the mouse or pressing any other key.
+    Mod+Shift+P { power-off-monitors; }
+}

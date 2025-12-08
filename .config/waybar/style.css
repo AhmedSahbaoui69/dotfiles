@@ -41,7 +41,7 @@
 
 /* WAYBAR WINDOW */
 window#waybar {
-  background-color: rgba(17, 17, 27, 0.7);
+  background-color: rgba(17, 17, 27, 0.9);
   margin: 0;
 }
 
@@ -167,6 +167,7 @@ window#waybar {
 
 #window {
   color: @sapphire;
+  min-width: 600px
 }
 
 #custom-power {

@@ -1,18 +1,17 @@
 if status is-interactive
-    hyprctl splash | cowsay
+    fortune -s | cowsay
 end
 
 alias h "eval (history | fzf | sed 's/^[ ]*[0-9]*[ ]*//')"
 
 alias pls sudo
 alias adios "shutdown -h now"
-alias ls='eza -al --color=always --group-directories-first --icons' # preferred listing
+alias ls='eza -al --color=always --group-directories-first --icons'
 alias cat "bat --theme Dracula"
 alias grep='grep --color=auto'
 alias ip "ip --color=auto"
 alias doxme "wget http://ipinfo.io/ip -qO -"
-alias touch "install -D /dev/null"
-alias clients "hyprctl clients -j | jq 'map({(.class): .xwayland}) | add'"
+alias clients='niri msg --json windows | jq "map({app_id: .\"app_id\", pid: .pid})"'
 
 set -gx BROWSER .local/share/applications/ZenBrowser.desktop
 set -gx EDITOR nvim

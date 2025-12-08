@@ -1,0 +1,36 @@
+// __        ___           _                 ____        _           
+// \ \      / (_)_ __   __| | _____      __ |  _ \ _   _| | ___  ___ 
+//  \ \ /\ / /| | '_ \ / _` |/ _ \ \ /\ / / | |_) | | | | |/ _ \/ __|
+//   \ V  V / | | | | | (_| | (_) \ V  V /  |  _ <| |_| | |  __/\__ \
+//    \_/\_/  |_|_| |_|\__,_|\___/ \_/\_/   |_| \_\\__,_|_|\___||___/
+
+window-rule {
+    geometry-corner-radius 10
+    clip-to-geometry true
+}
+
+window-rule {
+    match app-id=r#"^kitty$"#
+    default-column-width {}
+}
+
+window-rule {
+    match title="^Picture-in-Picture$|^Picture in picture$"
+    open-floating true
+    default-floating-position x=0 y=0 relative-to="bottom-right"
+  }
+
+window-rule {
+    match app-id=r#"^org.gnome.Nautilus$"#
+    open-floating true
+}
+
+window-rule {
+    match app-id=r#"^(nwg-look|kdeconnect-indicator|org.gnome.Nautilus|qt5ct|wihotspot|qt6ct|mpv|eog|rofi|vlc|totem|gnome-system-monitor|io.missioncenter.MissionCenter|cpupower-gui|Yad|nm-connection-editor|blueman-manager|xdg-desktop-portal-gtk|pulsemixer|mousepad|org\.gnome\..*|org\.kde\..*|sticky.py)$"#
+    open-floating true
+}
+
+window-rule {
+    match title="^KDE Connect.*$"
+    open-floating true
+}

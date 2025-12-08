@@ -14,9 +14,7 @@
 		"margin-left": 0,
 		"margin-right": 0,
 		"modules-left": [
-			"hyprland/workspaces#pacman",
-			"custom/separator#blank",
-			"hyprland/window",
+			"niri/window",
 			"custom/updater",
 			"tray"
 		],
@@ -25,17 +23,11 @@
 		],
 		"modules-right": [
 			"network",
-      "custom/waydroid",
 			"group/motherboard",
 			"custom/night",
-      "custom/touch-toggle",
       "custom/rotate-toggle",
 			"group/laptop",
-			"custom/game-mode",
-			"custom/separator#blank",
-			"custom/cava",
-			"custom/separator#blank",
-			"group/audio",
+      "group/audio",
 			"custom/power"
 		]
 	},
@@ -54,9 +46,7 @@
 		"margin-left": 0,
 		"margin-right": 0,
 		"modules-left": [
-			"hyprland/workspaces#pacman",
-			"custom/separator#blank",
-			"hyprland/window",
+			"niri/window",
 			"custom/updater",
 			"tray"
 		],
@@ -65,17 +55,12 @@
 		],
 		"modules-right": [
 			"network",
-      "custom/waydroid",
 			"group/motherboard",
 			"custom/night",
-      "custom/touch-toggle",
       "custom/rotate-toggle",
 			"group/laptop",
-			"custom/game-mode",
-			"custom/separator#blank",
 			"custom/cava",
-			"custom/separator#blank",
-			"group/audio",
+      "group/audio",
 			"custom/power"
 		]
 	}

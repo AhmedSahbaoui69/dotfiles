@@ -8,10 +8,12 @@ for path in (cat $symfile)
     set src $dotdir/$path
     # Destination in ~/
     set dest (realpath ~)/$path
+    # Remove destination if it exists
+    rm -rf $dest
     # Ensure parent directory exists
     mkdir -p (dirname $dest)
-    # Create symlink (force overwrite if exists)
-    ln -sfn $src $dest
+    # Create symlink
+    ln -s $src $dest
     echo "Linked $src -> $dest"
 end
 

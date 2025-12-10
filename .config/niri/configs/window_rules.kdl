@@ -21,13 +21,13 @@ window-rule {
   }
 
 window-rule {
-    match app-id=r#"^org.gnome.Nautilus$"#
+    match app-id=r#"^(|kdeconnect-indicator||wihotspot|eog|vlc|totem||Yad|nm-connection-editor|blueman-manager|pulsemixer|mousepad|org\.gnome\..*|org\.kde\..*)$"#
     open-floating true
 }
 
 window-rule {
-    match app-id=r#"^(nwg-look|kdeconnect-indicator|org.gnome.Nautilus|qt5ct|wihotspot|qt6ct|mpv|eog|rofi|vlc|totem|gnome-system-monitor|io.missioncenter.MissionCenter|cpupower-gui|Yad|nm-connection-editor|blueman-manager|xdg-desktop-portal-gtk|pulsemixer|mousepad|org\.gnome\..*|org\.kde\..*|sticky.py)$"#
-    open-floating true
+  match app-id="org.gnome.Papers"
+  open-floating false
 }
 
 window-rule {

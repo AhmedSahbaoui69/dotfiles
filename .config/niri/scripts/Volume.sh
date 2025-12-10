@@ -1,5 +1,31 @@
+# Get Mic Volume
+get_mic_volume() {
+  pamixer --default-source --get-volume
+}
+
+# Get Mic Icon
+get_mic_icon() {
+  mic_vol=$(get_mic_volume)
+  if [ "$(pamixer --default-source --get-mute)" == "true" ]; then
+    echo ""
+  elif [ "$mic_vol" -le 25 ]; then
+    echo ""
+  elif [ "$mic_vol" -le 60 ]; then
+    echo ""
+  else
+    echo ""
+  fi
+}
+
+# Notify Mic
+notify_mic() {
+  if [ "$(pamixer --default-source --get-mute)" == "true" ]; then
+    notify-send -e -h string:x-canonical-private-synchronous:mic_notif -u low " Microphone Muted"
+  else
+    notify-send -e -h int:value:"$(get_mic_volume)" -h string:x-canonical-private-synchronous:mic_notif -u low "$(get_mic_icon)  Microphone $(get_mic_volume)%"
+  fi
+}
 #!/bin/bash
-# Scripts for volume controls for audio and mic
 
 # Get Volume
 get_volume() {
@@ -34,12 +60,31 @@ notify_user() {
   fi
 }
 
+# Increase Mic Volume
+inc_mic_volume() {
+  if [ "$(pamixer --default-source --get-mute)" == "true" ]; then
+    pamixer --default-source -u
+  fi
+  pamixer --default-source -i 2
+  notify_mic
+}
+
+# Decrease Mic Volume
+dec_mic_volume() {
+  if [ "$(pamixer --default-source --get-mute)" == "true" ]; then
+    pamixer --default-source -u
+  fi
+  pamixer --default-source -d 2
+  notify_mic
+}
+
+
 # Increase Volume
 inc_volume() {
   if [ "$(pamixer --get-mute)" == "true" ]; then
     pamixer -u && notify_user
   fi
-  pamixer -i 5 && notify_user
+  pamixer -i 2 && notify_user
 }
 
 # Decrease Volume
@@ -47,7 +92,7 @@ dec_volume() {
   if [ "$(pamixer --get-mute)" == "true" ]; then
     pamixer -u && notify_user
   fi
-  pamixer -d 5 && notify_user
+  pamixer -d 2 && notify_user
 }
 
 # Toggle Mute
@@ -62,7 +107,7 @@ toggle_mute() {
 # Toggle Mic
 toggle_mic() {
   if [ "$(pamixer --default-source --get-mute)" == "false" ]; then
-    pamixer --default-source -m && notify-send -e -u low "    Microphone Switched OFF"
+    pamixer --default-source -m && notify-send -e -u low "  Microphone Switched OFF"
   elif [ "$(pamixer --default-source --get-mute)" == "true" ]; then
     pamixer -u --default-source u && notify-send -e -u low "  Microphone Switched ON"
   fi
@@ -79,6 +124,10 @@ elif [[ "$1" == "--toggle" ]]; then
   toggle_mute
 elif [[ "$1" == "--toggle-mic" ]]; then
   toggle_mic
+elif [[ "$1" == "--mic-inc" ]]; then
+  inc_mic_volume
+elif [[ "$1" == "--mic-dec" ]]; then
+  dec_mic_volume
 else
   get_volume
 fi

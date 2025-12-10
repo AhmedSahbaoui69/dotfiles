@@ -13,13 +13,14 @@ binds {
     Mod+F                 { spawn "nautilus"; }                                         // File Manager
     Mod+E                 { spawn "kitty" "-e" "nvim"; }                                // Neovim
 
-
     // Misc
-    Mod+L                 { spawn "swaylock" "-C" "~/.config/swaylock/config.conf"; }   // Lock Screen
+    Mod+L                 { spawn "swaylock" "-C" "/home/hmed/.config/swaylock/config.conf"; }   // Lock Screen
     Mod+Z                 { spawn "wayscriber" "-a" "--no-tray"; }                      // Wayscriber
     Mod+Alt+R             { spawn "~/.config/niri/scripts/Refresh.sh"; }                // Refresh
     Mod+Alt+V             { spawn "~/.config/niri/scripts/ClipManager.sh"; }            // Clipboard Manager
-
+    Mod+P                 { spawn-sh "niri msg pick-color |
+                                      awk 'NR==2 {print substr($0, index($0,\"#\"))}' |
+                                      wl-copy" ; }                                      // Pick Color and Copy to Clipboard
 
     // XF86 Binds
     XF86AudioRaiseVolume  allow-when-locked=true { spawn-sh "~/.config/niri/scripts/Volume.sh --inc"; }
@@ -61,19 +62,15 @@ binds {
     Mod+WheelScrollUp     { focus-column-left; }
     Mod+C                 { center-column; }
     Mod+Ctrl+R            { reset-window-height; }
+    Mod+Ctrl+C            { center-visible-columns; }
 
     // Consume one window from the right to the bottom of the focused column.
     Mod+Comma  { consume-window-into-column; }
     // Expel the bottom window from the focused column to the right.
     Mod+Period { expel-window-from-column; }
 
-    // Mod+R { switch-preset-column-width-back; }
     Mod+Shift+R { switch-preset-window-height; }
 
-
-
-    // Center all fully visible columns on screen.
-    Mod+Ctrl+C { center-visible-columns; }
 
     Mod+Shift+Left { set-column-width "-10%"; }
     Mod+Shift+Right { set-column-width "+10%"; }
@@ -85,13 +82,6 @@ binds {
     // Move the focused window between the floating and the tiling layout.
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
 
-    // Toggle tabbed column display mode.
-    // Windows in this column will appear as vertical tabs,
-    // rather than stacked on top of each other.
-    Mod+W { toggle-column-tabbed-display; }
-
-    // Actions to switch layouts.
-    // Note: if you uncomment these, make sure you do NOT have
     // a matching layout switch hotkey configured in xkb options above.
     // Having both at once on the same hotkey will break the switching,
     // since it will switch twice upon pressing the hotkey (once by xkb, once by niri).

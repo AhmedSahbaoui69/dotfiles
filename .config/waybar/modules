@@ -1,24 +1,4 @@
 {
-  "hyprland/workspaces#pacman": {
-    "disable-scroll": true,
-    "persistent-only": true,
-    "all-outputs": false,
-    "on-click": "activate",
-    "show-special": false,
-    "persistent-workspaces": {
-      "eDP-1": [1,2,3,4,5],
-      "DP-3": [11,12,13,14,15],
-      "HDMI-A-1": [11,12,13,14,15],
-      "DP-4": [11,12,13,14,15]
-    },
-    "format": "{icon}",
-    "format-icons": {
-      "active": " 󰮯 ",
-      "default": "󰊠",
-      "persistent": "󰊠"
-    }
-  },
-
   "group/motherboard": {
     "orientation": "horizontal",
     "modules": [
@@ -27,7 +7,6 @@
       "custom/temp"
     ]
   },
-
   "group/laptop": {
     "orientation": "horizontal",
     "modules": [
@@ -35,7 +14,6 @@
       "battery"
     ]
   },
-
   "group/audio": {
     "orientation": "horizontal",
     "modules": [
@@ -43,7 +21,6 @@
       "pulseaudio#microphone"
     ]
   },
-
   "backlight": {
     "device": "intel_backlight",
     "format": "{icon} {percent}%",
@@ -55,22 +32,15 @@
     "on-scroll-up": "~/.config/niri/scripts/Brightness.sh --inc",
     "on-scroll-down": "~/.config/niri/scripts/Brightness.sh --dec"
   },
-
   "custom/cava": {
     "exec": "~/.config/niri/scripts/WaybarCava.sh",
-    "return-type": "json",
-    "on-click": "~/.config/niri/scripts/WaybarCava.sh play-toggle",
-    "on-click-right": "~/.config/niri/scripts/WaybarCava.sh switch-player",
-    "signal": 9,
-    "restart-interval": 1
+    "format": "{}"
   },
-
   "custom/polycat": {
     "format": "{}",
-    "exec": "/usr/bin/polycat --config-path ~/.config/polycat/polycat-config --stat-path /proc/stat",
+    "exec": "polycat --config-path ~/.config/polycat/polycat-config --stat-path /proc/stat",
     "on-click": "kitty -e btop"
   },
-
   "battery": {
     "align": 0,
     "rotate": 0,
@@ -104,7 +74,6 @@
     "tooltip": true,
     "tooltip-format": "{timeTo} {power}w"
   },
-
   "bluetooth": {
     "format": "",
     "format-disabled": "󰂳",
@@ -115,28 +84,24 @@
     "tooltip": true,
     "on-click": "blueman-manager"
   },
-
   "clock": {
     "interval": 1,
     "format": "{:%I:%M:%S %p}",
     "tooltip-format": "{:%D}"
   },
-
   "niri/window": {
-      "format": "{}",
-      "separate-outputs": true,
-      "expand": true,
-      "min-length": 90,
-      "max-length": 90
+    "format": "{}",
+    "separate-outputs": true,
+    "expand": true,
+    "min-length": 90,
+    "max-length": 90
   },
-
   "memory": {
     "interval": 2,
     "format": "󰍛 {percentage}%",
     "tooltip": true,
     "tooltip-format": "{used:0.1f}GB/{total:0.1f}G"
   },
-
   "network": {
     "interval": 1,
     "format": " {bandwidthUpBytes}  {bandwidthDownBytes}",
@@ -144,7 +109,6 @@
     "format-ethernet": " {bandwidthUpBytes}  {bandwidthDownBytes}",
     "format-disconnected": "󰌙  Offline..."
   },
-
   "pulseaudio": {
     "format": "{icon}  {volume}%",
     "format-bluetooth": "{icon} 󰂰 {volume}%",
@@ -174,11 +138,10 @@
     "tooltip-format": "{desc}",
     "smooth-scrolling-threshold": 1
   },
-
   "pulseaudio#microphone": {
     "format": "{format_source}",
-    "format-source": " {volume}%",
-    "format-source-muted": "",
+    "format-source": " {volume}%",
+    "format-source-muted": "",
     "on-click": "~/.config/niri/scripts/Volume.sh --toggle-mic",
     "on-click-right": "kitty --class pulsemixer -e pulsemixer",
     "on-scroll-up": "~/.config/niri/scripts/Volume.sh --mic-inc",
@@ -186,7 +149,6 @@
     "tooltip-format": "{source_desc}",
     "scroll-step": 5
   },
-
   "custom/temp": {
     "format": "{}",
     "return-type": "text",
@@ -195,12 +157,10 @@
     "tooltip": true,
     "tooltip-format": "Average CPU Temp"
   },
-
   "tray": {
     "icon-size": 15,
     "spacing": 8
   },
-
   "custom/power": {
     "format": "⏻  ",
     "exec": "echo ; echo Power Menu",
@@ -208,7 +168,6 @@
     "interval": "once",
     "tooltip": true
   },
-
   "custom/night": {
     "format": "{}",
     "return-type": "json",
@@ -218,7 +177,6 @@
     "tooltip": true,
     "tooltip-format": "Night Mode"
   },
-
   "custom/waydroid": {
     "format": "{}",
     "return-type": "json",
@@ -229,17 +187,15 @@
     "tooltip-format": "Waydroid Container",
     "interval": 5
   },
-
   "custom/rotate-toggle": {
-      "format": "{}",
-      "return-type": "json",
-      "exec": "$HOME/.config/niri/scripts/AutoRotate.sh",
-      "on-click": "$HOME/.config/niri/scripts/AutoRotate.sh toggle && pkill -SIGRTMIN+13 waybar",
-      "signal": 13,
-      "tooltip": true,
-      "tooltip-format": "Auto Rotate"
+    "format": "{}",
+    "return-type": "json",
+    "exec": "$HOME/.config/niri/scripts/AutoRotate.sh",
+    "on-click": "$HOME/.config/niri/scripts/AutoRotate.sh toggle && pkill -SIGRTMIN+13 waybar",
+    "signal": 13,
+    "tooltip": true,
+    "tooltip-format": "Auto Rotate"
   },
-
   "custom/touch-toggle": {
     "format": "{}",
     "return-type": "json",
@@ -249,7 +205,6 @@
     "tooltip": true,
     "tooltip-format": "Touch Mode"
   },
-
   "custom/updater": {
     "format": " {}",
     "exec": "if command -v yay &>/dev/null; then yay -Qu | wc -l; elif command -v dnf &>/dev/null; then dnf check-update --quiet | grep -E '^[a-zA-Z0-9]' | wc -l; else echo 0; fi",

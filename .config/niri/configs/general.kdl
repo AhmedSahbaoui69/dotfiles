@@ -13,7 +13,7 @@ screenshot-path "~/Media/shots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 // Input
 input {
-    focus-follows-mouse
+    focus-follows-mouse max-scroll-amount="10%"
     
     keyboard {
         xkb {
@@ -59,7 +59,7 @@ layout {
 }
 
 overview {
-    backdrop-color "#313244"
+    backdrop-color "#181825"
 }
 
 // Cursor Theming

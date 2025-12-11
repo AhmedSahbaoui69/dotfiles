@@ -42,10 +42,10 @@ binds {
     Mod+S                 { fullscreen-window; }                                        // Fullscreen   
     Ctrl+M                { toggle-windowed-fullscreen; }                               // Windowed Fullscreen  
     Mod+Q repeat=false    { close-window; }                                             // Close Window
-    Mod+Ctrl+Left         { move-column-left; }                                         // Move Column Left
-    Mod+Ctrl+Down         { move-window-down; }                                         // Move Window Down
-    Mod+Ctrl+Up           { move-window-up; }                                           // Move Window Up  
-    Mod+Ctrl+Right        { move-column-right; }                                        // Move Column Right    
+    Mod+Ctrl+Left         { move-column-left-or-to-monitor-left; }                      // Move Column Left
+    Mod+Ctrl+Down         { move-window-down-or-to-workspace-down; }                    // Move Window Down
+    Mod+Ctrl+Up           { move-window-up-or-to-workspace-up; }                        // Move Window Up  
+    Mod+Ctrl+Right        { move-column-right-or-to-monitor-right; }                    // Move Column Right    
     Mod+BracketLeft       { consume-or-expel-window-left; }                             // Consume/Expel Left
     Mod+BracketRight      { consume-or-expel-window-right; }                            // Consume/Expel Right
     
@@ -54,15 +54,17 @@ binds {
     Mod+M                 { expand-column-to-available-width; }                         // Expand Window To Available Width
 
     // Focus   
-    Mod+Left              { focus-column-left; }
-    Mod+Down              { focus-window-down; }
-    Mod+Up                { focus-window-up; }
-    Mod+Right             { focus-column-right; }
-    Mod+WheelScrollDown   { focus-column-right;}
-    Mod+WheelScrollUp     { focus-column-left; }
+    Mod+Left              { focus-column-or-monitor-left; }
+    Mod+Right             { focus-column-or-monitor-right; }
+    Mod+Up                { focus-window-or-workspace-up; }
+    Mod+Down              { focus-window-or-workspace-down; }
+    Mod+Alt+Left          { focus-monitor-left; }
+    Mod+Alt+Right         { focus-monitor-right; }
+    Mod+WheelScrollDown   { focus-workspace-down;}
+    Mod+WheelScrollUp     { focus-workspace-up; }
     Mod+C                 { center-column; }
-    Mod+Ctrl+R            { reset-window-height; }
     Mod+Ctrl+C            { center-visible-columns; }
+    Mod+Ctrl+R            { reset-window-height; }
 
     // Consume one window from the right to the bottom of the focused column.
     Mod+Comma  { consume-window-into-column; }

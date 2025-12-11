@@ -26,8 +26,8 @@ window-rule {
 }
 
 window-rule {
-  match app-id="org.gnome.Papers"
-  open-floating false
+    match app-id="org.gnome.Papers"
+    open-floating false
 }
 
 window-rule {

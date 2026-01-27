@@ -13,7 +13,7 @@ alias ip "ip --color=auto"
 alias doxme "wget http://ipinfo.io/ip -qO -"
 alias clients='niri msg --json windows | jq "map({app_id: .\"app_id\", pid: .pid})"'
 
-set -gx BROWSER .local/share/applications/ZenBrowser.desktop
+set -gx BROWSER /usr/bin/helium-browser
 set -gx EDITOR nvim
 set -gx CRYPTOGRAPHY_OPENSSL_NO_LEGACY true
 set -gx HYPRSHOT_DIR $HOME/Pictures/shots

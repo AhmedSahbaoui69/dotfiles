@@ -1,5 +1,5 @@
 [
- 	// EXTERNAL DISPLAY
+	// EXTERNAL DISPLAY
 	{
 		"include": "~/.config/waybar/modules",
 		"layer": "top",
@@ -8,7 +8,11 @@
 		"position": "top",
 		"spacing": 6,
 		"fixed-center": true,
-		"output": ["HDMI-A-1", "DP-3", "DP-4"],
+		"output": [
+			"HDMI-A-1",
+			"DP-3",
+			"DP-4"
+		],
 		"margin-top": 0,
 		"margin-bottom": 0,
 		"margin-left": 0,
@@ -23,11 +27,13 @@
 		],
 		"modules-right": [
 			"network",
+			"custom/waydroid",
 			"group/motherboard",
 			"custom/night",
-      "custom/rotate-toggle",
+			"custom/rotate-toggle",
 			"group/laptop",
-      "group/audio",
+			"custom/cava",
+			"group/audio",
 			"custom/power"
 		]
 	},
@@ -57,10 +63,10 @@
 			"network",
 			"group/motherboard",
 			"custom/night",
-      "custom/rotate-toggle",
+			"custom/rotate-toggle",
 			"group/laptop",
 			"custom/cava",
-      "group/audio",
+			"group/audio",
 			"custom/power"
 		]
 	}

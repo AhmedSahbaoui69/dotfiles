@@ -4,6 +4,8 @@
 //   \ V  V / | | | | | (_| | (_) \ V  V /  |  _ <| |_| | |  __/\__ \
 //    \_/\_/  |_|_| |_|\__,_|\___/ \_/\_/   |_| \_\\__,_|_|\___||___/
 
+
+// Specific Window Rules
 window-rule {
     geometry-corner-radius 10
     clip-to-geometry true
@@ -21,7 +23,7 @@ window-rule {
   }
 
 window-rule {
-    match app-id=r#"^(|kdeconnect-indicator||wihotspot|eog|vlc|totem||Yad|nm-connection-editor|blueman-manager|pulsemixer|mousepad|org\.gnome\..*|org\.kde\..*)$"#
+    match app-id=r#"^(|kdeconnect-indicator||wihotspot|eog|vlc|totem||Yad|nm-connection-editor|blueman-manager|foot|mousepad|org\.gnome\..*|org\.kde\..*)$"#
     open-floating true
 }
 
@@ -33,4 +35,47 @@ window-rule {
 window-rule {
     match title="^KDE Connect.*$"
     open-floating true
+}
+
+// General Rules
+window-rule {
+    match title="^Picture-in-Picture$|^Picture in picture$"
+    baba-is-float false
+}
+
+layer-rule {
+    match namespace="waybar"
+
+    background-effect {
+        blur true
+        xray false
+    }
+
+    popups {
+        opacity 0.75
+        geometry-corner-radius 10
+
+        background-effect {
+            xray false
+            blur true
+        }
+    }
+}
+
+window-rule {
+    background-effect {
+        blur true
+        xray true
+    }
+}
+
+window-rule {
+    popups {
+        geometry-corner-radius 10
+        opacity 0.75
+
+        background-effect {
+            blur true
+        }
+    }
 }

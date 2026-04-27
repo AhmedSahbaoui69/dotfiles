@@ -1,73 +1,71 @@
 [
-	// EXTERNAL DISPLAY
-	{
-		"include": "~/.config/waybar/modules",
-		"layer": "top",
-		"exclusive": true,
-		"passthrough": false,
-		"position": "top",
-		"spacing": 6,
-		"fixed-center": true,
-		"output": [
-			"HDMI-A-1",
-			"DP-3",
-			"DP-4"
-		],
-		"margin-top": 0,
-		"margin-bottom": 0,
-		"margin-left": 0,
-		"margin-right": 0,
-		"modules-left": [
-			"niri/window",
-			"custom/updater",
-			"tray"
-		],
-		"modules-center": [
-			"clock"
-		],
-		"modules-right": [
-			"network",
-			"custom/waydroid",
-			"group/motherboard",
-			"custom/night",
-			"custom/rotate-toggle",
-			"group/laptop",
-			"custom/cava",
-			"group/audio",
-			"custom/power"
-		]
-	},
-	// PRIMARY DISPLAY
-	{
-		"include": "~/.config/waybar/modules",
-		"layer": "top",
-		"exclusive": true,
-		"passthrough": false,
-		"position": "top",
-		"spacing": 6,
-		"fixed-center": true,
-		"output": "eDP-1",
-		"margin-top": 0,
-		"margin-bottom": 0,
-		"margin-left": 0,
-		"margin-right": 0,
-		"modules-left": [
-			"niri/window",
-			"custom/updater",
-			"tray"
-		],
-		"modules-center": [
-			"clock"
-		],
-		"modules-right": [
-			"network",
-			"group/motherboard",
-			"custom/night",
-			"custom/rotate-toggle",
-			"group/laptop",
-			"custom/cava",
-			"group/audio",
-			"custom/power"
-		]
-	}
+  // EXTERNAL DISPLAY
+  {
+    "include": "~/.config/waybar/modules",
+    "layer": "top",
+    "exclusive": true,
+    "passthrough": false,
+    "position": "top",
+    "spacing": 6,
+    "fixed-center": true,
+    "output": [
+      "HDMI-A-1",
+      "DP-3",
+      "DP-4"
+    ],
+    "margin-top": 0,
+    "margin-bottom": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "modules-left": [
+      "niri/window",
+      "tray"
+    ],
+    "modules-center": [
+      "clock"
+    ],
+    "modules-right": [
+      "network",
+      "custom/waydroid",
+      "group/motherboard",
+      "custom/night",
+      "custom/rotate-toggle",
+      "group/laptop",
+      "custom/cava",
+      "group/audio",
+      "custom/power"
+    ]
+  },
+  // PRIMARY DISPLAY
+  {
+    "include": "~/.config/waybar/modules",
+    "layer": "top",
+    "exclusive": true,
+    "passthrough": false,
+    "position": "top",
+    "spacing": 6,
+    "fixed-center": true,
+    "output": "eDP-1",
+    "margin-top": 0,
+    "margin-bottom": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "modules-left": [
+      "niri/window",
+      "tray"
+    ],
+    "modules-center": [
+      "clock"
+    ],
+    "modules-right": [
+      "network",
+      "group/motherboard",
+      "custom/night",
+      "custom/rotate-toggle",
+      "group/laptop",
+      "custom/cava",
+      "group/audio",
+      "custom/power"
+    ]
+  }
 ]

@@ -5,7 +5,7 @@
 // |____/ \__\__,_|_|   \__|\__,_| .__/  
 //                               |_|     
 
-spawn-at-startup "swww-daemon"
+spawn-at-startup "awww-daemon"
 spawn-at-startup "waybar"
 spawn-at-startup "nm-applet"
 spawn-at-startup "blueman-applet"

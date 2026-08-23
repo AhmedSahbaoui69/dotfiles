@@ -10,7 +10,7 @@ binds {
     Mod+D                 { spawn "bash" "/home/hmed/.config/niri/scripts/tofi.sh"; }   // App Menu
     Mod+T                 { spawn "kitty"; }                                            // Terminal
     Mod+B                 { spawn "chromium"; }                                         // Browser
-    Mod+F                 { spawn "nautilus"; }                                         // File Manager
+    Mod+F                 { spawn-sh "gdbus call --session --dest org.freedesktop.FileManager1 --object-path /org/freedesktop/FileManager1 --method org.freedesktop.FileManager1.ShowFolders \"['file://$HOME']\" \"\""; }
     Mod+E                 { spawn "kitty" "-e" "nvim"; }                                // Neovim
 
     // Misc
@@ -52,6 +52,8 @@ binds {
     // Resize
     Mod+R                 { switch-preset-column-width; }                               // Cycle Through Width Presets
     Mod+M                 { expand-column-to-available-width; }                         // Expand Window To Available Width
+
+    Mod+Ctrl+P repeat=false { spawn-sh "wl-mirror $(niri msg --json focused-output | jq -r .name)"; }
 
     // Focus   
     Mod+Left              { focus-column-or-monitor-left; }

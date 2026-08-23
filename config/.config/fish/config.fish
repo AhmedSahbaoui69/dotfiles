@@ -6,7 +6,7 @@ alias h "eval (history | fzf | sed 's/^[ ]*[0-9]*[ ]*//')"
 
 alias pls sudo
 alias adios "shutdown -h now"
-alias ls='eza -al --color=always --group-directories-first --icons'
+alias ls='eza -al --color=always --group-directories-first --icons=always'
 alias cat "bat --theme Dracula"
 alias grep='grep --color=auto'
 alias ip "ip --color=auto"

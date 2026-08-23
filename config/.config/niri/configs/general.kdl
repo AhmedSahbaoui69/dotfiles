@@ -67,3 +67,7 @@ cursor {
     xcursor-theme "Bibata-Modern-Classic"
     xcursor-size 24
 }
+
+blur {
+    saturation 1.5
+  }

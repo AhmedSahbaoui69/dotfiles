@@ -23,7 +23,7 @@ window-rule {
   }
 
 window-rule {
-    match app-id=r#"^(|kdeconnect-indicator||wihotspot|eog|vlc|totem||Yad|nm-connection-editor|blueman-manager|foot|mousepad|org\.gnome\..*|org\.kde\..*)$"#
+    match app-id=r#"^(|kdeconnect-indicator|soundpeats-c30|wihotspot|eog|vlc|totem||Yad|nm-connection-editor|blueman-manager|foot|mousepad|org\.gnome\..*|org\.kde\..*)$"#
     open-floating true
 }
 
@@ -63,12 +63,17 @@ layer-rule {
 }
 
 window-rule {
+    draw-border-with-background false 
     background-effect {
         blur true
         xray true
     }
 }
 
+window-rule {
+    exclude app-id="kitty"
+    opacity 0.9
+}
 window-rule {
     popups {
         geometry-corner-radius 10

@@ -1,0 +1,3 @@
+# Python bytecode artifacts (e.g. from custom kitty kittens)
+__pycache__/
+*.pyc
